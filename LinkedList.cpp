@@ -101,10 +101,17 @@ void LinkedList<T>::pop_back()
     {
         return;
     }
-    if
+    if (this->m_size == 1)
+    {
+        delete this->mp_tail;
+        this->mp_head = this->mp_tail = nullptr;
+        this->m_size--;
+        return;
+    }
     Node<T> *tmp = this->mp_tail;
     this->mp_tail = this->mp_tail->mp_previous;
     this->mp_tail->mp_next = nullptr;
+    this->m_size--;
     delete tmp;
 }
 

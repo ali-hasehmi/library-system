@@ -15,6 +15,17 @@ int main()
     list.push_back(7);
     list.push_back(8);
     list.push_back(9);
+    list.pop_back();
+    list.pop_back();
+    list.pop_back();
+    list.pop_back();
+    list.pop_back();
+    list.pop_back();
+    list.pop_back();
+    list.pop_back();
+    list.pop_back();
+    list.pop_back();
+    std::cout << list.size() << std::endl;;
     LinkedList<std::string> string_list;
     string_list.push_back("alireza");
     string_list.push_back("Borhan");
@@ -28,10 +39,10 @@ int main()
     for (LinkedList<int>::iterator it = list.begin(); it != list.end(); it++)
     {
         std::cout << *it << " ";
-    }
-    for (LinkedList<std::string>::iterator it = string_list.begin(); it != string_list.end(); ++it)
-    {
-        std::cout << it->data() << std::endl;
-    }
+     }
+    // for (LinkedList<std::string>::iterator it = string_list.begin(); it != string_list.end(); ++it)
+    // {
+    //     std::cout << it->data() << std::endl;
+    // }
     return 0;
 }
