@@ -1,5 +1,7 @@
 #include "book.h"
 
+Book::CompTag Book::ms_comp_tag_book = Book::TitleBase;
+
 Book::Book(const std::string &_title, const std::string &_author, const std::string &_publish_date, Genre _genre)
     : m_title(_title),
       m_author(_author),
@@ -20,7 +22,7 @@ Book::Book()
 
 void Book::changeCompTag(const CompTag _tag)
 {
-    ms_comp_tag = _tag;
+    ms_comp_tag_book = _tag;
 }
 
 std::string Book::genreEnumToString(const Book::Genre &_genre) const
@@ -74,11 +76,11 @@ std::ostream &operator<<(std::ostream &os, const Book &_book)
 
 bool Book::operator<(const Book &_b)
 {
-    if (ms_comp_tag == CompTag::TitleBase)
+    if (ms_comp_tag_book == CompTag::TitleBase)
     {
         return this->m_title < _b.m_title;
     }
-    if (ms_comp_tag == CompTag::IDBase)
+    if (ms_comp_tag_book == CompTag::IDBase)
     {
         return this->m_id < _b.m_id;
     }
@@ -86,11 +88,11 @@ bool Book::operator<(const Book &_b)
 
 bool Book::operator>(const Book &_b)
 {
-    if (ms_comp_tag == CompTag::TitleBase)
+    if (ms_comp_tag_book == CompTag::TitleBase)
     {
         return this->m_title > _b.m_title;
     }
-    if (ms_comp_tag == CompTag::IDBase)
+    if (ms_comp_tag_book == CompTag::IDBase)
     {
         return this->m_id > _b.m_id;
     }
@@ -98,11 +100,11 @@ bool Book::operator>(const Book &_b)
 
 bool Book::operator==(const Book &_b)
 {
-    if (ms_comp_tag == CompTag::TitleBase)
+    if (ms_comp_tag_book == CompTag::TitleBase)
     {
         return this->m_title == _b.m_title;
     }
-    if (ms_comp_tag == CompTag::IDBase)
+    if (ms_comp_tag_book == CompTag::IDBase)
     {
         return this->m_id == _b.m_id;
     }
@@ -110,11 +112,11 @@ bool Book::operator==(const Book &_b)
 
 bool Book::operator!=(const Book &_b)
 {
-    if (ms_comp_tag == CompTag::TitleBase)
+    if (ms_comp_tag_book == CompTag::TitleBase)
     {
         return this->m_title != _b.m_title;
     }
-    if (ms_comp_tag == CompTag::IDBase)
+    if (ms_comp_tag_book == CompTag::IDBase)
     {
         return this->m_id != _b.m_id;
     }

@@ -262,3 +262,30 @@ typename LinkedListIterator<LinkedList>::const_pointer LinkedListIterator<Linked
 {
     return &(this->mp_ptr->m_data);
 }
+
+template <typename T>
+inputDataStream &operator>>(inputDataStream &ids, LinkedList<T>& _Dll)
+{
+    size_t tmp_size;
+    ids >> tmp_size;
+    for (size_t i = 0; i < tmp_size; ++i)
+    {
+        T temp;
+        ids >> temp;
+        _Dll.push_back(temp);
+    }
+    return ids;
+}
+
+template <typename T>
+outputDataStream &operator<<(outputDataStream &ods, const LinkedList<T> &_Dll)
+{
+    Node<T> *curr = _Dll.mp_head;
+    ods << _Dll.m_size;
+    while (curr != nullptr)
+    {
+        ods << curr->m_data;
+        curr = curr->mp_next;
+    }
+    return ods;
+}

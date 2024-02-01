@@ -2,6 +2,7 @@
 #define LINKED_LIST_H
 
 #include <cstddef>
+#include "datastream.h"
 
 template <typename U>
 class Node;
@@ -18,7 +19,7 @@ public:
     using pointer = value_type *;
     using const_pointer = const value_type *;
     using reference = value_type &;
-    using const_reference = const value_type&;
+    using const_reference = const value_type &;
     using iterator = LinkedListIterator<LinkedList<value_type>>;
     LinkedList();
     ~LinkedList();
@@ -35,6 +36,11 @@ public:
     const_reference front() const;
     reference back();
     const_reference back() const;
+    template <typename U>
+    friend outputDataStream &operator<<(outputDataStream &ods, const LinkedList<U> &_Dll);
+
+    template <typename U>
+    friend inputDataStream &operator>>(inputDataStream &ids, LinkedList<U> &_Dll);
 
 private:
     size_t m_size;
@@ -43,27 +49,29 @@ private:
 };
 
 template <typename LinkedList>
-class LinkedListIterator{
-    
-    public:
+class LinkedListIterator
+{
+
+public:
     using value_type = typename LinkedList::value_type;
     using reference = typename LinkedList::reference;
     using const_reference = typename LinkedList::const_reference;
     using pointer = typename LinkedList::pointer;
     using const_pointer = typename LinkedList::const_pointer;
-    LinkedListIterator(Node<value_type>* _ptr);
-    bool operator==(const LinkedListIterator& _itr)const;
-    bool operator!=(const LinkedListIterator& _itr)const;
-    LinkedListIterator& operator++();
+    LinkedListIterator(Node<value_type> *_ptr);
+    bool operator==(const LinkedListIterator &_itr) const;
+    bool operator!=(const LinkedListIterator &_itr) const;
+    LinkedListIterator &operator++();
     LinkedListIterator operator++(int);
-    LinkedListIterator& operator--();
+    LinkedListIterator &operator--();
     LinkedListIterator operator--(int);
-    const_reference operator*()const;
+    const_reference operator*() const;
     reference operator*();
     pointer operator->();
-    const_pointer operator->()const;
-    private:
-    Node<value_type>* mp_ptr;
+    const_pointer operator->() const;
+
+private:
+    Node<value_type> *mp_ptr;
 };
 template <typename U>
 class Node
@@ -72,6 +80,7 @@ class Node
     friend class LinkedList;
     template <typename LinkedList>
     friend class LinkedListIterator;
+
 public:
     Node();
     Node(const U &_value);
@@ -87,5 +96,3 @@ private:
 #include "LinkedList.cpp"
 
 #endif // LINKED_LIST_H
-
-

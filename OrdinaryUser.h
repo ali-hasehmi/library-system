@@ -28,9 +28,8 @@ private:
     int64_t m_penalty;
     int64_t m_id;
     LinkedList<int64_t> m_user_book_id_list;
-    static CompTag m_comp_tag;
+    static CompTag ms_comp_tag_user;
 };
 
-OrdinaryUser::CompTag m_comp_tag = OrdinaryUser::UserNameBase;
 
 #endif // ORDINARY_USER_H

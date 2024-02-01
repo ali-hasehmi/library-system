@@ -46,7 +46,7 @@ private:
     queue<int64_t> m_reservation_queue;
     Genre m_genre;
     int64_t m_id;
-    static CompTag ms_comp_tag; // default on Title Base
+    static CompTag ms_comp_tag_book; // default on Title Base
 };
-Book::CompTag ms_comp_tag = Book::TitleBase;
+
 #endif // BOOK_H
