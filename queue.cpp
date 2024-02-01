@@ -10,7 +10,7 @@ queue<T>::queue(int argMaxLength) : frontIndex(-1),
 
 template<typename T>
 bool queue<T>::isEmpty() {
-    return dataArray->empty();
+    return !elementCount;
 }
 
 template<typename T>
@@ -48,5 +48,7 @@ template<typename T>
 queue<T>::~queue() {
     if (!this->isEmpty()) {
         delete[] dataArray;
+    }else{
+        delete dataArray;
     }
 }
