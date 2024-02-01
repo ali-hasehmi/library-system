@@ -142,13 +142,13 @@ LinkedListIterator<LinkedList>::LinkedListIterator(Node<value_type> *_ptr)
 }
 
 template <typename LinkedList>
-inline bool LinkedListIterator<LinkedList>::operator==(const LinkedListIterator& _itr)const
+inline bool LinkedListIterator<LinkedList>::operator==(const LinkedListIterator &_itr) const
 {
     return this->mp_ptr == _itr.mp_ptr;
 }
 
 template <typename LinkedList>
-bool LinkedListIterator<LinkedList>::operator!=(const LinkedListIterator& _itr)const
+bool LinkedListIterator<LinkedList>::operator!=(const LinkedListIterator &_itr) const
 {
     return this->mp_ptr != _itr.mp_ptr;
 }
@@ -163,7 +163,7 @@ LinkedListIterator<LinkedList> &LinkedListIterator<LinkedList>::operator++()
 template <typename LinkedList>
 LinkedListIterator<LinkedList> LinkedListIterator<LinkedList>::operator++(int)
 {
-    LinkedListIterator<LinkedList> tmp (*this);
+    LinkedListIterator<LinkedList> tmp(*this);
     ++(*this);
     return tmp;
 }
@@ -181,7 +181,7 @@ LinkedListIterator<LinkedList> LinkedListIterator<LinkedList>::operator--(int)
     LinkedListIterator<LinkedList> tmp(*this);
     --(*this);
     return tmp;
-}   
+}
 
 template <typename LinkedList>
 typename LinkedListIterator<LinkedList>::const_reference LinkedListIterator<LinkedList>::operator*() const
@@ -193,4 +193,16 @@ template <typename LinkedList>
 typename LinkedListIterator<LinkedList>::reference LinkedListIterator<LinkedList>::operator*()
 {
     return this->mp_ptr->m_data;
+}
+
+template <typename LinkedList>
+typename LinkedListIterator<LinkedList>::pointer LinkedListIterator<LinkedList>::operator->()
+{
+    return &(this->mp_ptr->m_data);
+}
+
+template <typename LinkedList>
+typename LinkedListIterator<LinkedList>::const_pointer LinkedListIterator<LinkedList>::operator->() const
+{
+    return &(this->mp_ptr->m_data);
 }

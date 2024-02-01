@@ -1,6 +1,7 @@
 #include "LinkedList.h"
 #include <iostream>
 #include <list>
+ #include <string>
 int main()
 {
     std::list<int> new_list;
@@ -14,6 +15,10 @@ int main()
     list.push_back(7);
     list.push_back(8);
     list.push_back(9);
+    LinkedList<std::string> string_list;
+    string_list.push_back("alireza");
+    string_list.push_back("Borhan");
+    string_list.push_back("hey");
     std::cout << "Range Base Loop\n";
     for (auto &e : list)
     {
@@ -24,6 +29,9 @@ int main()
     {
         std::cout << *it << " ";
     }
-    
+    for (LinkedList<std::string>::iterator it = string_list.begin(); it != string_list.end(); ++it)
+    {
+        std::cout << it->data() << std::endl;
+    }
     return 0;
 }

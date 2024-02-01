@@ -16,6 +16,7 @@ class LinkedList
 public:
     using value_type = T;
     using pointer = value_type *;
+    using const_pointer = const value_type *;
     using reference = value_type &;
     using const_reference = const value_type&;
     using iterator = LinkedListIterator<LinkedList<value_type>>;
@@ -49,6 +50,7 @@ class LinkedListIterator{
     using reference = typename LinkedList::reference;
     using const_reference = typename LinkedList::const_reference;
     using pointer = typename LinkedList::pointer;
+    using const_pointer = typename LinkedList::const_pointer;
     LinkedListIterator(Node<value_type>* _ptr);
     bool operator==(const LinkedListIterator& _itr)const;
     bool operator!=(const LinkedListIterator& _itr)const;
@@ -58,7 +60,8 @@ class LinkedListIterator{
     LinkedListIterator operator--(int);
     const_reference operator*()const;
     reference operator*();
-    
+    pointer operator->();
+    const_pointer operator->()const;
     private:
     Node<value_type>* mp_ptr;
 };
