@@ -29,7 +29,7 @@ Node<U>::~Node()
 }
 
 template <typename T>
-inline LinkedList<T>::LinkedList()
+LinkedList<T>::LinkedList()
     : m_size(0),
       mp_head(nullptr),
       mp_tail(nullptr)
@@ -64,7 +64,7 @@ void LinkedList<T>::push_back(const T &value)
 {
     // Need to be Implemented
     Node<T> *new_node = new Node<T>(value);
-    // if list is empty
+    // if list is empty 
     if (this->m_size == 0)
     {
         this->mp_head = new_node;

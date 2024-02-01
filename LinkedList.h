@@ -2,12 +2,20 @@
 #define LINKED_LIST_H
 
 #include <cstddef>
+
 template <typename U>
 class Node;
+
+template <typename LinkedList>
+class LinkedListIterator;
 
 template <typename T>
 class LinkedList
 {
+    using value_type = T;
+    using pointer = T *;
+    using reference = T &;
+    using iterator = LinkedListIterator<value_type>;
 
 public:
     LinkedList();
@@ -33,7 +41,7 @@ private:
 template <typename U>
 class Node
 {
-     template <typename T>
+    template <typename T>
     friend class LinkedList;
 
 public:
@@ -44,8 +52,8 @@ public:
 
 private:
     U m_data;
-    U *mp_next;
-    U *mp_previous;
+    Node<U> *mp_next;
+    Node<U> *mp_previous;
 };
 
 #include "LinkedList.cpp"
