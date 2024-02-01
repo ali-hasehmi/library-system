@@ -45,6 +45,12 @@ inputDataStream &operator>>(inputDataStream &inputStream, uint8_t &i)
     return inputStream;
 }
 
+inputDataStream &operator>>(inputDataStream &inputStream, bool &i)
+{
+    inputStream.mp_input_file->read((char *)&i, sizeof(bool));
+    return inputStream;
+}
+
 inputDataStream &operator>>(inputDataStream &inputStream, std::string &i)
 {
     size_t string_size;
@@ -129,6 +135,12 @@ outputDataStream &operator<<(outputDataStream &outputStream, const uint16_t &i)
 outputDataStream &operator<<(outputDataStream &outputStream, const uint8_t &i)
 {
     outputStream.mp_output_file->write((char *)&i, sizeof(i));
+    return outputStream;
+}
+
+outputDataStream &operator<<(outputDataStream &outputStream, const bool &i)
+{
+    outputStream.mp_output_file->write((char *)&i, sizeof(bool));
     return outputStream;
 }
 
