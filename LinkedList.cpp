@@ -68,7 +68,16 @@ size_t LinkedList<T>::size() const noexcept
 template <typename T>
 void LinkedList<T>::clear() noexcept
 {
-    // Need to be Implemented
+    Node<value_type> *curr = this->mp_head;
+    Node<value_type> *next;
+    while (curr != nullptr)
+    {
+        next = curr->mp_next;
+        delete curr;
+        curr = next;
+    }
+    this->mp_head = this->mp_tail = nullptr;
+    this->m_size = 0;
 }
 
 template <typename T>
@@ -133,12 +142,11 @@ void LinkedList<T>::pop_front()
         return;
     }
 
-    Node<value_type>* tmp = this->mp_head;
+    Node<value_type> *tmp = this->mp_head;
     this->mp_head = this->mp_head->mp_next;
     this->mp_head->mp_previous = nullptr;
     this->m_size--;
     delete tmp;
-
 }
 
 template <typename T>
