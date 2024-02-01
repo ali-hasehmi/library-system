@@ -42,6 +42,18 @@ LinkedList<T>::~LinkedList()
 }
 
 template <typename T>
+typename LinkedList<T>::iterator LinkedList<T>::begin()
+{
+    return iterator(this->mp_head);
+}
+
+template <typename T>
+typename LinkedList<T>::iterator LinkedList<T>::end()
+{
+    return iterator(nullptr);
+}
+
+template <typename T>
 bool LinkedList<T>::empty()
 {
     return (this->m_size == 0);
@@ -60,11 +72,11 @@ void LinkedList<T>::clear() noexcept
 }
 
 template <typename T>
-void LinkedList<T>::push_back(const T &value)
+void LinkedList<T>::push_back(const_reference value)
 {
     // Need to be Implemented
     Node<T> *new_node = new Node<T>(value);
-    // if list is empty 
+    // if list is empty
     if (this->m_size == 0)
     {
         this->mp_head = new_node;
@@ -94,31 +106,91 @@ void LinkedList<T>::pop_front()
 }
 
 template <typename T>
-void LinkedList<T>::push_front(const T &value)
+void LinkedList<T>::push_front(const_reference value)
 {
     // Need to be Implemented
 }
 
 template <typename T>
-T &LinkedList<T>::front()
+typename LinkedList<T>::reference LinkedList<T>::front()
 {
     return this->mp_head->m_data;
 }
 
 template <typename T>
-const T &LinkedList<T>::front() const
+typename LinkedList<T>::const_reference LinkedList<T>::front() const
 {
     return this->mp_head->m_data;
 }
 
 template <typename T>
-T &LinkedList<T>::back()
+typename LinkedList<T>::reference LinkedList<T>::back()
 {
     return this->mp_tail->m_data;
 }
 
 template <typename T>
-const T &LinkedList<T>::back() const
+typename LinkedList<T>::const_reference LinkedList<T>::back() const
 {
     return this->mp_tail->m_data;
+}
+
+template <typename LinkedList>
+LinkedListIterator<LinkedList>::LinkedListIterator(Node<value_type> *_ptr)
+    : mp_ptr(_ptr)
+{
+}
+
+template <typename LinkedList>
+inline bool LinkedListIterator<LinkedList>::operator==(const LinkedListIterator& _itr)const
+{
+    return this->mp_ptr == _itr.mp_ptr;
+}
+
+template <typename LinkedList>
+bool LinkedListIterator<LinkedList>::operator!=(const LinkedListIterator& _itr)const
+{
+    return this->mp_ptr != _itr.mp_ptr;
+}
+
+template <typename LinkedList>
+LinkedListIterator<LinkedList> &LinkedListIterator<LinkedList>::operator++()
+{
+    this->mp_ptr = this->mp_ptr->mp_next;
+    return *(this);
+}
+
+template <typename LinkedList>
+LinkedListIterator<LinkedList> LinkedListIterator<LinkedList>::operator++(int)
+{
+    LinkedListIterator<LinkedList> tmp (*this);
+    ++(*this);
+    return tmp;
+}
+
+template <typename LinkedList>
+LinkedListIterator<LinkedList> &LinkedListIterator<LinkedList>::operator--()
+{
+    this->mp_ptr = this->mp_ptr->mp_previous;
+    return *this;
+}
+
+template <typename LinkedList>
+LinkedListIterator<LinkedList> LinkedListIterator<LinkedList>::operator--(int)
+{
+    LinkedListIterator<LinkedList> tmp(*this);
+    --(*this);
+    return tmp;
+}   
+
+template <typename LinkedList>
+typename LinkedListIterator<LinkedList>::const_reference LinkedListIterator<LinkedList>::operator*() const
+{
+    return this->mp_ptr->m_data;
+}
+
+template <typename LinkedList>
+typename LinkedListIterator<LinkedList>::reference LinkedListIterator<LinkedList>::operator*()
+{
+    return this->mp_ptr->m_data;
 }

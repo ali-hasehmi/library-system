@@ -12,38 +12,63 @@ class LinkedListIterator;
 template <typename T>
 class LinkedList
 {
-    using value_type = T;
-    using pointer = T *;
-    using reference = T &;
-    using iterator = LinkedListIterator<value_type>;
 
 public:
+    using value_type = T;
+    using pointer = value_type *;
+    using reference = value_type &;
+    using const_reference = const value_type&;
+    using iterator = LinkedListIterator<LinkedList<value_type>>;
     LinkedList();
     ~LinkedList();
+    iterator begin();
+    iterator end();
     bool empty();
     size_t size() const noexcept;
     void clear() noexcept;
-    void push_back(const T &value);
+    void push_back(const_reference value);
     void pop_back();
     void pop_front();
-    void push_front(const T &value);
-    T &front();
-    const T &front() const;
-    T &back();
-    const T &back() const;
+    void push_front(const_reference value);
+    reference front();
+    const_reference front() const;
+    reference back();
+    const_reference back() const;
 
 private:
     size_t m_size;
-    Node<T> *mp_head;
-    Node<T> *mp_tail;
+    Node<value_type> *mp_head;
+    Node<value_type> *mp_tail;
 };
 
+template <typename LinkedList>
+class LinkedListIterator{
+    
+    public:
+    using value_type = typename LinkedList::value_type;
+    using reference = typename LinkedList::reference;
+    using const_reference = typename LinkedList::const_reference;
+    using pointer = typename LinkedList::pointer;
+    LinkedListIterator(Node<value_type>* _ptr);
+    bool operator==(const LinkedListIterator& _itr)const;
+    bool operator!=(const LinkedListIterator& _itr)const;
+    LinkedListIterator& operator++();
+    LinkedListIterator operator++(int);
+    LinkedListIterator& operator--();
+    LinkedListIterator operator--(int);
+    const_reference operator*()const;
+    reference operator*();
+    
+    private:
+    Node<value_type>* mp_ptr;
+};
 template <typename U>
 class Node
 {
     template <typename T>
     friend class LinkedList;
-
+    template <typename LinkedList>
+    friend class LinkedListIterator;
 public:
     Node();
     Node(const U &_value);
@@ -59,3 +84,5 @@ private:
 #include "LinkedList.cpp"
 
 #endif // LINKED_LIST_H
+
+
