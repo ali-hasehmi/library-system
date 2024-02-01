@@ -8,12 +8,14 @@ Book::Book(const std::string &_title, const std::string &_author, const std::str
       m_publish_date(_publish_date),
       m_genre(_genre)
 {
+    this->m_id = rand();
 }
 
 Book::Book()
     : m_give_time(0),
       m_is_available(true)
 {
+    this->m_id = rand();
 }
 
 void Book::changeCompTag(const CompTag _tag)
@@ -35,7 +37,7 @@ std::string Book::genreEnumToString(const Book::Genre &_genre) const
 inputDataStream &operator>>(inputDataStream &inputStream, Book &_book)
 {
     inputStream >> _book.m_title >> _book.m_author >>
-        _book.m_genre >> _book.m_give_time >>
+        _book.m_id >> _book.m_genre >> _book.m_give_time >>
         _book.m_publish_date >> _book.m_is_available;
     return inputStream;
 }
@@ -43,7 +45,7 @@ inputDataStream &operator>>(inputDataStream &inputStream, Book &_book)
 outputDataStream &operator<<(outputDataStream &outputStream, const Book &_book)
 {
     outputStream << _book.m_title << _book.m_author
-                 << _book.m_genre << _book.m_give_time
+                 << _book.m_id << _book.m_genre << _book.m_give_time
                  << _book.m_publish_date << _book.m_is_available;
 
     return outputStream;

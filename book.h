@@ -43,7 +43,7 @@ private:
     std::string m_publish_date;
     int64_t m_give_time;
     bool m_is_available;
-    queue<OrdinaryUser *> m_reservation_queue;
+    queue<int64_t> m_reservation_queue;
     Genre m_genre;
     int64_t m_id;
     static CompTag ms_comp_tag; // default on Title Base

@@ -25,11 +25,12 @@ public:
     bool operator!=(const OrdinaryUser &_ou);
 
 private:
-    int m_penalty;
-    int m_id;
-    LinkedList<Book *> m_user_book_list;
+    int64_t m_penalty;
+    int64_t m_id;
+    LinkedList<int64_t> m_user_book_id_list;
     static CompTag m_comp_tag;
 };
 
 OrdinaryUser::CompTag m_comp_tag = OrdinaryUser::UserNameBase;
+
 #endif // ORDINARY_USER_H

@@ -2,6 +2,7 @@
 
 AbstractUser *OrdinaryUser::logIn(const std::string &_user_name, const std::string &_password)
 {
+    this->m_id = rand();
 }
 
 int OrdinaryUser::loadFromFile(const std::string &_file_path)
