@@ -118,13 +118,44 @@ void LinkedList<T>::pop_back()
 template <typename T>
 void LinkedList<T>::pop_front()
 {
-    // Need to be Implemented
+    // If list is empty;
+    if (this->m_size == 0)
+    {
+        return;
+    }
+
+    // If list only contains one element
+    if (this->m_size == 1)
+    {
+        delete this->mp_head;
+        this->mp_head = this->mp_tail = nullptr;
+        this->m_size--;
+        return;
+    }
+
+    Node<value_type>* tmp = this->mp_head;
+    this->mp_head = this->mp_head->mp_next;
+    this->mp_head->mp_previous = nullptr;
+    this->m_size--;
+    delete tmp;
+
 }
 
 template <typename T>
 void LinkedList<T>::push_front(const_reference value)
 {
-    // Need to be Implemented
+    Node<value_type> *new_node = new Node<value_type>(value);
+    if (this->m_size == 0)
+    {
+        this->mp_head = new_node;
+        this->mp_tail = new_node;
+        this->m_size++;
+        return;
+    }
+    new_node->mp_next = this->mp_head;
+    this->mp_head->mp_previous = new_node;
+    this->mp_head = new_node;
+    this->m_size++;
 }
 
 template <typename T>

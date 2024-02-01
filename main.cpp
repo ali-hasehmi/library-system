@@ -23,8 +23,14 @@ int main()
     list.pop_back();
     list.pop_back();
     list.pop_back();
-    list.pop_back();
-    list.pop_back();
+    //list.pop_back();
+    list.push_front(15);
+    list.push_back(5);
+    list.push_front(1);
+    list.pop_front();
+    list.pop_front();
+    list.pop_front();
+    
     std::cout << list.size() << std::endl;;
     LinkedList<std::string> string_list;
     string_list.push_back("alireza");
