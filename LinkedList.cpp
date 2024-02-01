@@ -63,7 +63,7 @@ template <typename T>
 void LinkedList<T>::push_back(const T &value)
 {
     // Need to be Implemented
-    Node *new_node = new Node(value);
+    Node<T> *new_node = new Node<T>(value);
     // if list is empty
     if (this->m_size == 0)
     {

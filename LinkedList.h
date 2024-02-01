@@ -1,6 +1,7 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
+#include <cstddef>
 template <typename U>
 class Node;
 
@@ -32,6 +33,7 @@ private:
 template <typename U>
 class Node
 {
+     template <typename T>
     friend class LinkedList;
 
 public:
@@ -49,4 +51,3 @@ private:
 #include "LinkedList.cpp"
 
 #endif // LINKED_LIST_H
-
