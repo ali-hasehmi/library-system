@@ -22,16 +22,17 @@ template<typename T>
 void queue<T>::enqueue(const T& argData) {
     if (elementCount == size) {
         // queue full
-        T* newArray = (T*) realloc(dataArray,sizeof(T)*size*2);
+        /*T* newArray = (T*) realloc(dataArray,sizeof(T)*size*2);
         if(newArray == nullptr){
           std::cout << "realloc failed";
         }
-        dataArray = newArray;
-        delete[] newArray;
-    } else {
+        dataArray = newArray;*/
+        dataArray = (T*) realloc(dataArray,sizeof(T)*size*2);
+        size *= 2;
+    }
         dataArray[(++backIndex) % size] = argData;
         ++elementCount;
-    }
+
 }
 
 template<typename T>
@@ -40,8 +41,8 @@ T queue<T>::dequeue() {
         std::cout << "QUEUE IS EMPTY";
         return -1;
     } else {
-        T front = dataArray[frontIndex];
-        ++frontIndex;
+        T front = dataArray[++frontIndex];
+
         --elementCount;
         return front;
     }
