@@ -1,6 +1,6 @@
 
-#ifndef DSPROJECT_QUEUE_H
-#define DSPROJECT_QUEUE_H
+#ifndef QUEUE_H
+#define QUEUE_H
 
 #include <iostream>
 #include <array>
@@ -26,5 +26,5 @@ public:
     ~queue();
 };
 
-
+#include "queue.cpp"
 #endif //DS_QUEUE_HPP

@@ -1,5 +1,5 @@
 #include "queue.h"
-
+#include <cstdlib>
 template<typename T>
 queue<T>::queue(int argMaxLength) : frontIndex(-1),
                                     backIndex(-1),
@@ -21,7 +21,10 @@ T *queue<T>::front() {
 template<typename T>
 void queue<T>::enqueue(T argData) {
     if (elementCount == size) {
-        std::cout << "queue full";
+        // queue full
+        T* newArray = (T*) realloc(dataArray,sizeof(dataArray)*2);
+        dataArray = newArray;
+        delete[] newArray;
     } else {
         dataArray[(++backIndex) % size] = argData;
         ++elementCount;
@@ -47,5 +50,3 @@ queue<T>::~queue() {
         delete[] dataArray;
     }
 }
-
-
