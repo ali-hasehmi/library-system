@@ -14,7 +14,7 @@ int main()
     inputDataStream ods(&i);
     ods >> b;
     std::cout << b;
-    std::cout << duration_cast<years>(time_point.time_since_epoch()).count() << std::endl;;
+    std::cout << duration_cast<years>(time_point.time_since_epoch()).count() << std::endl;
     std::cout << sizeof(Book::Genre);
     return 0;
     
