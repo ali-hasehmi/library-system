@@ -138,7 +138,12 @@ namespace AVL {
 //    main search
     template<typename U>
     void AvlTree<U>::search(const U &target) {
-        recursiveBstSearch(root, target);
+        if (recursiveBstSearch(root, target)) {
+            std::cout << "\nfound";
+        } else {
+            std::cout << "\nnot found";
+        }
+
     }
 
 
