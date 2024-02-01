@@ -21,7 +21,7 @@ public:
 
     T dequeue();
 
-    void enqueue(T argData);
+    void enqueue(const T& argData);
 
     ~queue();
 };

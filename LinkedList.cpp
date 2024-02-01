@@ -96,7 +96,16 @@ void LinkedList<T>::push_back(const_reference value)
 template <typename T>
 void LinkedList<T>::pop_back()
 {
-    // Need to be Implemented
+    // If List is Empty
+    if (this->m_size == 0)
+    {
+        return;
+    }
+    if
+    Node<T> *tmp = this->mp_tail;
+    this->mp_tail = this->mp_tail->mp_previous;
+    this->mp_tail->mp_next = nullptr;
+    delete tmp;
 }
 
 template <typename T>

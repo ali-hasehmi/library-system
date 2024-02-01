@@ -19,7 +19,7 @@ T *queue<T>::front() {
 }
 
 template<typename T>
-void queue<T>::enqueue(T argData) {
+void queue<T>::enqueue(const T& argData) {
     if (elementCount == size) {
         // queue full
         T* newArray = (T*) realloc(dataArray,sizeof(dataArray)*2);
