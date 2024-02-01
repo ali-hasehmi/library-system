@@ -15,6 +15,8 @@ namespace AVL {
         Node *rightChild;
         int height;
     public:
+        Node();
+
         Node(const T &argData);
 
         Node(const T &argData, Node *argLeftChild, Node *argRightChild, int argHeight);
@@ -27,7 +29,11 @@ namespace AVL {
     class AvlTree {
         Node<U> *root;
     public:
-        AvlTree(const LinkedList<U>& argLinkedList);
+        AvlTree();
+
+        AvlTree(int dataArray[], int size);
+
+        AvlTree(const LinkedList<U> &argLinkedList);
 
         Node<U> *rightRotate(Node<U> *y);
 
@@ -38,15 +44,27 @@ namespace AVL {
         //returns the new root
         Node<U> *insert(Node<U> *argRoot, U argData);
 
-        void sortedPrint(Node<U> *argRoot);
+        void preOrder(Node<U> *argRoot);
+
+        void print();
 
         bool recursiveBstSearch(Node<U> *argRoot, const U &target);
 
         void search(const U &target);
 
         //overload == and >< and cout
-    };
+        int max(int a, int b) {
+            return (a > b) ? a : b;
+        }
 
+        int height(Node<U> *argNode) {
+            if (argNode == nullptr) {
+                return 0;
+            } else {
+                return argNode->height;
+            }
+        }
+    };
 
 
 }
