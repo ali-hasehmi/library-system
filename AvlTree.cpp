@@ -49,8 +49,8 @@ namespace AVL {
         y->leftChild = T2;
 
 //        update heights
-        y->height = max(y->leftChild->height, y->rightChild->height + 1);
-        x->height = max(x->leftChild->height, x->rightChild->height + 1);
+        y->height = max(height(y->leftChild), height(y->rightChild)) + 1;
+        x->height = max(height(x->leftChild), height(x->rightChild)) + 1;
 //        return new root
         return x;
     }
@@ -64,18 +64,18 @@ namespace AVL {
         x->rightChild = T2;
 
 //        update heights
-        x->height = max(x->leftChild->height, x->rightChild->height + 1);
-        y->height = max(y->leftChild->height, y->rightChild->height + 1);
+        x->height = max(height(x->leftChild), height(x->rightChild)) + 1;
+        y->height = max(height(y->leftChild), height(y->rightChild)) + 1;
 //        return new root
         return y;
     }
 
     template<typename U>
     int AvlTree<U>::getBalance(Node<U> *argNode) {
-        if (argNode == nullptr || argNode->rightChild == nullptr || argNode->leftChild == nullptr) {
+        if (argNode == nullptr) {
             return 0;
         }
-        return argNode->leftChild->height - argNode->rightChild->height;
+        return height(argNode->leftChild) - height(argNode->rightChild);
     }
 
 //    returns new root
@@ -118,7 +118,7 @@ namespace AVL {
             return rightRotate(argNewNode);
         }
 //        rl
-        if (balance < -1 && argData > argNewNode->rightChild->data) {
+        if (balance < -1 && argData < argNewNode->rightChild->data) {
             argNewNode->rightChild = rightRotate(argNewNode->rightChild);
             return leftRotate(argNewNode);
         }
@@ -127,18 +127,18 @@ namespace AVL {
     }
 
     template<typename U>
-    void AvlTree<U>::preOrder(Node<U> *argRoot) {
+    void AvlTree<U>::inOrder(Node<U> *argRoot) {
         if (argRoot == nullptr) {
             return;
         }
-        preOrder(root->leftChild);
+        inOrder(argRoot->leftChild);
         std::cout << argRoot->data << ' ';
-        preOrder(root->rightChild);
+        inOrder(argRoot->rightChild);
     }
 
 //    helper function for search
     template<typename U>
-    bool AvlTree<U>::recursiveBstSearch(Node<U> *argRoot, const U &target) {
+    Node<U> *AvlTree<U>::recursiveBstSearch(Node<U> *argRoot, const U &target) {
 //        if (argRoot == nullptr) {
 //            return false;
 //        } else if (root->data == target) {
@@ -150,7 +150,10 @@ namespace AVL {
 //            bool val = search(argRoot->rightChild, target);
 //            return val;
 //        }
-        if (argRoot->data == target || argRoot == nullptr) {
+        if (argRoot == nullptr) {
+            return nullptr;
+        }
+        if (argRoot->data == target) {
             return argRoot;
         } else if (argRoot->data < target) {
             return recursiveBstSearch(argRoot->rightChild, target);
@@ -162,7 +165,7 @@ namespace AVL {
 
     template<typename U>
     void AvlTree<U>::print() {
-        preOrder(root);
+        inOrder(root);
     }
 
 // change bool to u*

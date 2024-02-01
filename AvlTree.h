@@ -44,11 +44,11 @@ namespace AVL {
         //returns the new root
         Node<U> *insert(Node<U> *argRoot, U argData);
 
-        void preOrder(Node<U> *argRoot);
+        void inOrder(Node<U> *argRoot);
 
         void print();
 
-        bool recursiveBstSearch(Node<U> *argRoot, const U &target);
+        Node<U> *recursiveBstSearch(Node<U> *argRoot, const U &target);
 
         void search(const U &target);
 
