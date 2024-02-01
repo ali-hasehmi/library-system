@@ -5,7 +5,7 @@
 #include <string>
 int main()
 {
-    OrdinaryUser u;
+    
     std::list<int> new_list;
     LinkedList<int> list;
     list.push_back(1);
