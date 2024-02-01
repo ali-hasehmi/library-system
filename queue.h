@@ -14,6 +14,7 @@ class queue {
     int elementCount;
 public:
     queue(int argMaxLength);
+    queue();
 
     bool isEmpty();
 

@@ -1,46 +1,63 @@
 #include "queue.h"
 #include <cstdlib>
-template<typename T>
+template <typename T>
 queue<T>::queue(int argMaxLength) : frontIndex(-1),
                                     backIndex(-1),
                                     size(argMaxLength),
-                                    elementCount(0) {
+                                    elementCount(0)
+{
     dataArray = new T[argMaxLength];
 }
 
-template<typename T>
-bool queue<T>::isEmpty() {
+template <typename T>
+queue<T>::queue() : frontIndex(-1),
+                    backIndex(-1),
+                    size(1),
+                    elementCount(0)
+{
+    dataArray = new T[size];
+}
+
+template <typename T>
+bool queue<T>::isEmpty()
+{
     return !elementCount;
 }
 
-template<typename T>
-T *queue<T>::front() {
+template <typename T>
+T *queue<T>::front()
+{
     return &dataArray[frontIndex];
 }
 
-template<typename T>
-void queue<T>::enqueue(const T& argData) {
-    if (elementCount == size) {
+template <typename T>
+void queue<T>::enqueue(const T &argData)
+{
+    if (elementCount == size)
+    {
         // queue full
         /*T* newArray = (T*) realloc(dataArray,sizeof(T)*size*2);
         if(newArray == nullptr){
           std::cout << "realloc failed";
         }
         dataArray = newArray;*/
-        dataArray = (T*) realloc(dataArray,sizeof(T)*size*2);
+        dataArray = (T *)realloc(dataArray, sizeof(T) * size * 2);
         size *= 2;
     }
-        dataArray[(++backIndex) % size] = argData;
-        ++elementCount;
-
+    dataArray[(++backIndex) % size] = argData;
+    ++elementCount;
 }
 
-template<typename T>
-T queue<T>::dequeue() {
-    if (isEmpty()) {
+template <typename T>
+T queue<T>::dequeue()
+{
+    if (isEmpty())
+    {
         std::cout << "QUEUE IS EMPTY";
         return -1;
-    } else {
+    }
+    else
+    {
         T front = dataArray[++frontIndex];
 
         --elementCount;
@@ -48,7 +65,8 @@ T queue<T>::dequeue() {
     }
 }
 
-template<typename T>
-queue<T>::~queue() {
+template <typename T>
+queue<T>::~queue()
+{
     delete[] dataArray;
 }
