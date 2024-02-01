@@ -22,7 +22,7 @@ template<typename T>
 void queue<T>::enqueue(const T& argData) {
     if (elementCount == size) {
         // queue full
-        T* newArray = (T*) realloc(dataArray,sizeof(dataArray)*2);
+        T* newArray = (T*) realloc(dataArray,sizeof(T)*size*2);
         dataArray = newArray;
         delete[] newArray;
     } else {
