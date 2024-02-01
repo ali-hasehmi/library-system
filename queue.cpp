@@ -23,6 +23,9 @@ void queue<T>::enqueue(const T& argData) {
     if (elementCount == size) {
         // queue full
         T* newArray = (T*) realloc(dataArray,sizeof(T)*size*2);
+        if(newArray == nullptr){
+          std::cout << "realloc failed";
+        }
         dataArray = newArray;
         delete[] newArray;
     } else {
