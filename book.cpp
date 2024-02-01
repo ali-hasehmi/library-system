@@ -16,7 +16,12 @@ Book::Book()
 {
 }
 
-std::string Book::genreEnumToString(const Book::Genre& _genre)const
+void Book::changeCompTag(const CompTag _tag)
+{
+    ms_comp_tag = _tag;
+}
+
+std::string Book::genreEnumToString(const Book::Genre &_genre) const
 {
     std::string s[] = {
         "Novel",
@@ -63,4 +68,52 @@ std::ostream &operator<<(std::ostream &os, const Book &_book)
        << "\nGenre: " << _book.genreEnumToString(_book.m_genre)
        << "\npublish Date: " << _book.m_publish_date;
     return os;
+}
+
+bool Book::operator<(const Book &_b)
+{
+    if (ms_comp_tag == CompTag::TitleBase)
+    {
+        return this->m_title < _b.m_title;
+    }
+    if (ms_comp_tag == CompTag::IDBase)
+    {
+        return this->m_id < _b.m_id;
+    }
+}
+
+bool Book::operator>(const Book &_b)
+{
+    if (ms_comp_tag == CompTag::TitleBase)
+    {
+        return this->m_title > _b.m_title;
+    }
+    if (ms_comp_tag == CompTag::IDBase)
+    {
+        return this->m_id > _b.m_id;
+    }
+}
+
+bool Book::operator==(const Book &_b)
+{
+    if (ms_comp_tag == CompTag::TitleBase)
+    {
+        return this->m_title == _b.m_title;
+    }
+    if (ms_comp_tag == CompTag::IDBase)
+    {
+        return this->m_id == _b.m_id;
+    }
+}
+
+bool Book::operator!=(const Book &_b)
+{
+    if (ms_comp_tag == CompTag::TitleBase)
+    {
+        return this->m_title != _b.m_title;
+    }
+    if (ms_comp_tag == CompTag::IDBase)
+    {
+        return this->m_id != _b.m_id;
+    }
 }
