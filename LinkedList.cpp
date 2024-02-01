@@ -39,6 +39,7 @@ LinkedList<T>::LinkedList()
 template <typename T>
 LinkedList<T>::~LinkedList()
 {
+    this->clear();
 }
 
 template <typename T>
