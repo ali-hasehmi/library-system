@@ -49,9 +49,5 @@ T queue<T>::dequeue() {
 
 template<typename T>
 queue<T>::~queue() {
-    if (!this->isEmpty()) {
-        delete[] dataArray;
-    }else{
-        delete dataArray;
-    }
+    delete[] dataArray;
 }
