@@ -124,6 +124,7 @@ void MainMenu::menu1_normalUser()
         case 0:
             // show all books
             this->m_core.printBookList();
+            Sleep(10000);
             break;
         case 1:
             // show my books
