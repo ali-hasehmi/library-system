@@ -2,8 +2,7 @@
 
 namespace AVL {
     template<typename T>
-    Node<T>::Node(): data(0),
-                     leftChild(nullptr),
+    Node<T>::Node():leftChild(nullptr),
                      rightChild(nullptr),
                      height(1) {
     }
@@ -172,9 +171,9 @@ namespace AVL {
     template<typename U>
     void AvlTree<U>::search(const U &target) {
         if (recursiveBstSearch(root, target) == nullptr) {
-            std::cout << "\nnot found";
+            std::cout << "\nBook is found";
         } else {
-            std::cout << "\nfound";
+            std::cout << "\nBook is not found";
         }
 
     }
