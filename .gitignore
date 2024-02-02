@@ -1,5 +1,7 @@
 *.exe
 .vscode
+book
+user
 *.book
 *.user
 test*
