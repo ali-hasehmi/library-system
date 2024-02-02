@@ -142,20 +142,25 @@ void MainMenu::menu1_normalUser()
 
             Menu searchMenu({"Search by ID", "Search by Title"});
             int searchOption = searchMenu.display();
+            Book *_book;
             if (!searchOption)
             {
                 system("cls");
                 int64_t uid;
                 std::cout << "Book ID: ";
                 std::cin >> uid;
-                if (this->m_core.searchAllBooks(uid) != nullptr)
+                if ((_book = this->m_core.searchAllBooks(uid)) != nullptr)
                 {
+                    system("cls");
                     std::cout << "\nBook exists";
+                    std::cout << *_book;
                 }
                 else
                 {
+                    system("cls");
                     std::cout << "\nBook doesn't exist";
                 }
+                getchar();
             }
             else
             {
@@ -163,14 +168,20 @@ void MainMenu::menu1_normalUser()
                 std::string t;
                 std::cout << "Book Title: ";
                 std::cin >> t;
-                if (this->m_core.searchAllBooks(t) != nullptr)
+                if ((_book =this->m_core.searchAllBooks(t)) != nullptr)
                 {
+                    system("cls");
                     std::cout << "\nBook exists";
+                    std::cout << *_book;
                 }
                 else
                 {
+                    system("cls");
                     std::cout << "\nBook doesn't exist";
+                    std::cout << *_book;
                 }
+            getchar();
+            system("pause");
             }
             break;
         }
