@@ -30,6 +30,8 @@ public:
     bool operator!=(const OrdinaryUser &_ou);
     friend inputDataStream &operator>>(inputDataStream &inputStream, OrdinaryUser &_ou);
     friend outputDataStream &operator<<(outputDataStream &outputStream, const OrdinaryUser &_ou);
+    void addBook(int64_t _book_id);
+    void removeBook(int64_t _book_id);
 private:
     int64_t m_penalty;
     LinkedList<int64_t> m_user_book_id_list;

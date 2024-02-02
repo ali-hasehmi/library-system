@@ -43,6 +43,9 @@ public:
     int64_t id();
     std::string title();
     static void changeCompTag(const CompTag _tag);
+    void setAsAvailable();
+    void setAsUnAvailable();
+    int64_t FirstUserID();
     // friend std::istream& operator>>(std::istream &is,Book& _book);
 private:
     std::string genreEnumToString(const Book::Genre &_genre) const;

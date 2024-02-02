@@ -53,6 +53,21 @@ void Book::changeCompTag(const CompTag _tag)
     ms_comp_tag_book = _tag;
 }
 
+void Book::setAsAvailable()
+{
+    this->m_is_available = true;
+}
+
+void Book::setAsUnAvailable()
+{
+    this->m_is_available = false;
+}
+
+int64_t Book::FirstUserID()
+{
+    this->m_reservation_queue.front();
+}
+
 std::string Book::genreEnumToString(const Book::Genre &_genre) const
 {
     std::string s[] = {

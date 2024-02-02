@@ -133,6 +133,16 @@ bool OrdinaryUser::operator!=(const OrdinaryUser &_ou)
     }
 }
 
+void OrdinaryUser::addBook(int64_t _book_id)
+{
+    this->m_user_book_id_list.push_back(_book_id);
+}
+
+void OrdinaryUser::removeBook(int64_t _book_id)
+{
+    this->m_user_book_id_list.remove(_book_id);
+}
+
 inputDataStream &operator>>(inputDataStream &inputStream, OrdinaryUser &_ou)
 {
     inputStream >> _ou.m_first_name >> _ou.m_last_name >> _ou.m_national_code >> _ou.m_password >>
