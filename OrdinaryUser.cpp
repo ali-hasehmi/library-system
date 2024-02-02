@@ -147,6 +147,7 @@ LinkedList<int64_t> &OrdinaryUser::MyBooks()
 void OrdinaryUser::addBook(const int64_t& _book_id)
 {
     this->m_user_book_id_list.push_back(_book_id);
+    
 }
 
 void OrdinaryUser::removeBook(int64_t _book_id)
