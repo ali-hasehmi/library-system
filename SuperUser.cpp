@@ -8,7 +8,7 @@ int SuperUser::getBook(OrdinaryUser *_user, Book *_book)
     using namespace std::chrono;
     _user->removeBook(_book->id());
     int64_t giveBookTime = _book->giveTime();
-    int64_t Now = duration_cast<days>(std::chrono::system_clock::now().time_since_epoch());
+    int64_t Now = duration_cast<days>(std::chrono::system_clock::now().time_since_epoch()).count();
     _book->setAsAvailable();
     return _user->calculatePenalty(Now - giveBookTime);
 }
