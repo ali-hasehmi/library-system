@@ -34,10 +34,15 @@ namespace AVL
     AvlTree<U>::AvlTree(const LinkedList<U> &argLinkedList) : root(nullptr)
     {
         //            construct tree
+        std::cout << "AvlTree<U>::AvlTree(const LinkedList<U> &argLinkedList): started\n";
+        std::cout << "List Size: " << argLinkedList.size() <<std::endl;
         for (auto &i : argLinkedList)
         {
+            std::cout << "inLOOP1\n";
             root = insert(root, i);
+            std::cout << "inLoop2\n";
         }
+        std::cout << "AvlTree<U>::AvlTree(const LinkedList<U> &argLinkedList): ended\n";
     }
 
     template <typename U>
@@ -86,53 +91,79 @@ namespace AVL
     template <typename U>
     Node<U> *AvlTree<U>::insert(Node<U> *argNode, U argData)
     {
+
+        std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : started\n";
+
         if (argNode == nullptr)
         {
+            std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : nullptr\n";
+
             return newNode(argData);
         }
 
         if (argData < argNode->data)
         {
+            std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : smaller\n";
+
             argNode->leftChild = insert(argNode->leftChild, argData);
         }
         else if (argData > argNode->data)
         {
+            std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : bigger\n";
+
             argNode->rightChild = insert(argNode->rightChild, argData);
         }
         else
         { // equal keys
+            std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : equal\n";
+
             return argNode;
         }
+
+        std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : updateHeight\n";
+
         //        update height of ansector node
+        if(argNode != nullptr)
         argNode->height = 1 + max(height(argNode->leftChild), height(argNode->rightChild));
+
+        std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : getBalance\n";
 
         //        get balance
         int balance = getBalance(argNode);
 
         //        4 cases if unbalanced
 
+        std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : beforeRotations\n";
         //        ll
         if (balance > 1 && argData < argNode->leftChild->data)
         {
+            std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : rightRotate\n";
             return rightRotate(argNode);
         }
         //        rr
         if (balance < -1 && argData > argNode->rightChild->data)
         {
+            std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : leftRotate\n";
+
             return leftRotate(argNode);
         }
         //        lr
         if (balance > 1 && argData > argNode->leftChild->data)
         {
+            std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : left -right Rotate\n";
+
             argNode->leftChild = leftRotate(argNode->leftChild);
             return rightRotate(argNode);
         }
         //        rl
         if (balance < -1 && argData < argNode->rightChild->data)
         {
+            std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : right -left Rotate\n";
             argNode->rightChild = rightRotate(argNode->rightChild);
             return leftRotate(argNode);
         }
+
+        std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : finished\n";
 
         return argNode;
     }
@@ -238,11 +269,14 @@ namespace AVL
     template <typename U>
     Node<U> *AvlTree<U>::newNode(const U &key)
     {
+        std::cout << "Node<U> *AvlTree<U>::newNode(const U &key) : started\n";
         Node<U> *node = new Node<U>;
         node->data = key;
         node->rightChild = nullptr;
         node->leftChild = nullptr;
         node->height = 1;
+        std::cout << "Node<U> *AvlTree<U>::newNode(const U &key) : finished\n";
+
         return node;
     }
 
