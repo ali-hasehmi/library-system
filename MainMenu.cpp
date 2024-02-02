@@ -124,14 +124,17 @@ void MainMenu::menu1_normalUser()
         case 0:
             // show all books
             this->m_core.printBookList();
-            Sleep(10000);
+            getchar();
             break;
         case 1:
             // show my books
+            std::cout << "fuck1\n";
             for (auto &i : ((OrdinaryUser *)this->mp_user)->MyBooks())
             {
                 std::cout << *this->m_core.searchAllBooks(i);
             }
+            std::cout << "fuck2\n";
+
             break;
         case 2:
         {

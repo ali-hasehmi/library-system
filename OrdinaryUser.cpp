@@ -140,7 +140,8 @@ bool OrdinaryUser::operator!=(const OrdinaryUser &_ou)
 
 LinkedList<int64_t> &OrdinaryUser::MyBooks()
 {
-    this->m_user_book_id_list;
+    
+    return this->m_user_book_id_list;
 }
 
 void OrdinaryUser::addBook(int64_t _book_id)
