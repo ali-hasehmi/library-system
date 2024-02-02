@@ -2,5 +2,5 @@
 
 void SuperUser::getBook(OrdinaryUser *_user, Book *_book)
 {
-    _user->m_user_book_id_list.
+    _user->m_user_book_id_list.remove(_book.)
 }

@@ -149,3 +149,8 @@ bool Book::operator!=(const Book &_b)
         return this->m_id != _b.m_id;
     }
 }
+
+int64_t Book::id()
+{
+    this->m_id;
+}

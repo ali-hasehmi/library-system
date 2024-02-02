@@ -40,6 +40,7 @@ public:
     bool operator>(const Book &_b);
     bool operator==(const Book &_b);
     bool operator!=(const Book &_b);
+    int64_t id();
     static void changeCompTag(const CompTag _tag);
     // friend std::istream& operator>>(std::istream &is,Book& _book);
 private:
