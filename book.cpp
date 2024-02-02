@@ -154,3 +154,8 @@ int64_t Book::id()
 {
     this->m_id;
 }
+
+std::string Book::title()
+{
+    return this->m_title;
+}
