@@ -21,7 +21,7 @@ AbstractUser *OrdinaryUser::logIn(const std::string &_user_name, const std::stri
         if (std::filesystem::is_regular_file(entry))
         {
 
-            if ((entry.path().filename().stem().string()) == this->m_user_name)
+            if ((entry.path().filename().stem().string()) == _user_name)
             {
                 AbstractUser *login_user = new OrdinaryUser();
                 (OrdinaryUser *)login_user->loadFromFile(entry.path().filename().stem().string());

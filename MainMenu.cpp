@@ -79,6 +79,13 @@ bool MainMenu::menu0_loginHandler()
     {
         /*        compare passwords for user
                 if (passwordCompare == true) */
+        OrdinaryUser ou;
+        if(ou.logIn(userName,userPassword) == nullptr){
+            std::cout << "user not found\n";
+        }
+        else{
+            std::cout << "logged in successfully\n";
+        }
         return 1;
     }
 }
