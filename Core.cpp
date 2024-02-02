@@ -82,3 +82,9 @@ void Core::sortAllBooksTitle() {
     AVL::AvlTree<Book> searchTree(m_books_list);
     searchTree.print();
 }
+
+void Core::printBookList() {
+    for (auto &i:m_books_list) {
+        std::cout << i << std::endl;
+    }
+}

@@ -23,6 +23,7 @@ public:
 
     void sortAllBooksTitle();
 
+    void printBookList();
 private:
     void loadAllBooks();
 
