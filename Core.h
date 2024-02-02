@@ -13,6 +13,7 @@ public:
     Core();
 
     Core(bool isAdmin);
+
     static void createDir();
 
     void searchAllBooks(int64_t argId);
@@ -24,6 +25,11 @@ public:
     void sortAllBooksTitle();
 
     void printBookList();
+
+    void searchUsers(int userId);
+
+    void searchUsers(std::string userName);
+
 private:
     void loadAllBooks();
 

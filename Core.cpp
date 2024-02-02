@@ -88,3 +88,15 @@ void Core::printBookList() {
         std::cout << i << std::endl;
     }
 }
+
+void Core::searchUsers(int userId) {
+    for (auto &i:m_all_user_list) {
+        i.changeCompTag(OrdinaryUser::IDBase);
+    }
+    AVL::AvlTree<OrdinaryUser> searchTree(m_all_user_list);
+    searchTree.search()
+}
+
+void Core::searchUsers(std::string userName) {
+
+}
