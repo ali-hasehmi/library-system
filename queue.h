@@ -18,11 +18,13 @@ public:
 
     queue();
 
+    int capacity();
+    int count();
     bool isEmpty();
 
-    T *front();
+    T& front();
 
-    T dequeue();
+    T& dequeue();
 
     void enqueue(const T &argData);
 

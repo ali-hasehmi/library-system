@@ -5,6 +5,6 @@ AbstractUser::AbstractUser(const std::string &_first_name, const std::string &_l
   m_last_name(_last_name),
   m_national_code(_national_code),
   m_user_name(_user_name),
-  m_password(_)
+  m_password(_password)
 {
 }
