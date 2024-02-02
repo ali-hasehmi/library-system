@@ -44,6 +44,35 @@ LinkedList<T>::~LinkedList()
 }
 
 template <typename T>
+size_t LinkedList<T>::remove(const_reference value)
+{
+    size_t count = 0;
+    Node<value_type> *curr = this->mp_head;
+    while (curr != nullptr)
+    {
+        Node<value_type> *next = curr->mp_next, *prev = curr->mp_previous;
+        if (curr->m_data == value)
+        {
+            count++;
+            if (next != nullptr)
+            {
+                next->mp_previous = prev;
+            }
+            if (prev != nullptr)
+            {
+                prev->mp_next = next;
+            }else{
+                this->mp_head;
+            }
+            delete curr;
+           
+        }
+         curr = next;
+    }
+    return count;
+}
+
+template <typename T>
 typename LinkedList<T>::iterator LinkedList<T>::begin()
 {
     return iterator(this->mp_head);
@@ -53,6 +82,18 @@ template <typename T>
 typename LinkedList<T>::iterator LinkedList<T>::end()
 {
     return iterator(nullptr);
+}
+
+template <typename T>
+typename LinkedList<T>::const_iterator LinkedList<T>::begin() const noexcept
+{
+    return const_iterator(this->mp_head);
+}
+
+template <typename T>
+typename LinkedList<T>::const_iterator LinkedList<T>::end() const noexcept
+{
+    return const_iterator(nullptr);
 }
 
 template <typename T>

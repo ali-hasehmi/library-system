@@ -21,10 +21,14 @@ public:
     using reference = value_type &;
     using const_reference = const value_type &;
     using iterator = LinkedListIterator<LinkedList<value_type>>;
+    using const_iterator = const LinkedListIterator<LinkedList<value_type>>;
     LinkedList();
     ~LinkedList();
+    size_t remove(const_reference value);
     iterator begin();
     iterator end();
+    const_iterator begin()const noexcept;
+    const_iterator end()const noexcept;
     bool empty();
     size_t size() const noexcept;
     void clear() noexcept;
