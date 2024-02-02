@@ -128,13 +128,13 @@ void MainMenu::menu1_normalUser()
             break;
         case 1:
             // show my books
-            std::cout << "fuck1\n";
+            // std::cout << "fuck1\n";
             for (auto &i : ((OrdinaryUser *)this->mp_user)->MyBooks())
             {
                 std::cout << *this->m_core.searchAllBooks(i);
             }
-            std::cout << "fuck2\n";
-
+            // std::cout << "fuck2\n";
+            getchar();
             break;
         case 2:
         {

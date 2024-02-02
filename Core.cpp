@@ -52,10 +52,12 @@ void Core::createDir() {
 
 Book *Core::searchAllBooks(int64_t argId) {
 
+    std::cout << "Book *Core::searchAllBooks(int64_t argId): started\n";
     Book tempBook;
     tempBook.changeCompTag(Book::IDBase);
-
+    std::cout << "Book *Core::searchAllBooks(int64_t argId):  tempBook created\n";
     AVL::AvlTree<Book> searchTree(m_books_list);
+    std::cout << "Book *Core::searchAllBooks(int64_t argId):  Avl tree created\n";
     tempBook.idSetter(argId);
     return searchTree.search(tempBook);
 }
