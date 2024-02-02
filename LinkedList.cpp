@@ -58,16 +58,21 @@ size_t LinkedList<T>::remove(const_reference value)
             {
                 next->mp_previous = prev;
             }
+            else
+            {
+                this->mp_tail = curr->mp_previous;
+            }
             if (prev != nullptr)
             {
                 prev->mp_next = next;
-            }else{
-                this->mp_head;
+            }
+            else
+            {
+                this->mp_head = curr->mp_next;
             }
             delete curr;
-           
         }
-         curr = next;
+        curr = next;
     }
     return count;
 }
