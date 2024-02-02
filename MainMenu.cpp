@@ -144,7 +144,11 @@ void MainMenu::menu1_normalUser()
                 int64_t uid;
                 std::cout << "Book ID: ";
                 std::cin >> uid;
-                this->m_core.searchAllBooks(uid);
+                if(this->m_core.searchAllBooks(uid) != nullptr){
+                    std::cout << "\nBook exists";
+                }else{
+                    std::cout << "\nBook doesn't exist";
+                }
             }
             else
             {
@@ -152,7 +156,11 @@ void MainMenu::menu1_normalUser()
                 std::string t;
                 std::cout << "Book Title: ";
                 std::cin >> t;
-                this->m_core.searchAllBooks(t);
+                if(this->m_core.searchAllBooks(t) != nullptr){
+                    std::cout << "\nBook exists";
+                }else{
+                    std::cout << "\nBook doesn't exist";
+                }
             }
             break;
         }
@@ -188,9 +196,18 @@ void MainMenu::menu1_adminInterface()
             std::string userName;
             std::cout << "Enter book name : ";
             std::cin >> bookTitle;
-            std::cout << "Enter book owner : ";
+            std::cout << "Enter userName : ";
             std::cin >> userName;
+            if(this->m_core.searchAllBooks(bookTitle) == nullptr){
+                std::cout << "\nBook Invalid";
+                break;
+            }
+            if (this->m_core.searchUsers(userName) == nullptr){
+                std::cout << "\nUser Invalid";
+                break;
+            }
             ((SuperUser *)this->mp_user)->getBook(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle));
+
             system("cls");
             // code related to changing book ownership goes here
             break;
@@ -206,6 +223,14 @@ void MainMenu::menu1_adminInterface()
             std::cout << "Enter book owner : ";
             std::cin >> userName;
             system("cls");
+            if(this->m_core.searchAllBooks(bookTitle) == nullptr){
+                std::cout << "\nBook Invalid";
+                break;
+            }
+            if (this->m_core.searchUsers(userName) == nullptr){
+                std::cout << "\nUser Invalid";
+                break;
+            }
             ((SuperUser *)this->mp_user)->giveBook(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle));
             // code related to giving book goes here
             break;
@@ -220,6 +245,14 @@ void MainMenu::menu1_adminInterface()
             std::cin >> bookTitle;
             std::cout << "Enter book owner : ";
             std::cin >> userName;
+            if(this->m_core.searchAllBooks(bookTitle) == nullptr){
+                std::cout << "\nBook Invalid";
+                break;
+            }
+            if (this->m_core.searchUsers(userName) == nullptr){
+                std::cout << "\nUser Invalid";
+                break;
+            }
             ((SuperUser *)this->mp_user)->Reserve(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle));
             system("cls");
             //                code related to reserving book
@@ -238,6 +271,14 @@ void MainMenu::menu1_adminInterface()
             std::cin >> userName;
             std::cout << "Enter time to extend : ";
             std::cin >> extendedPeriod;
+            if(this->m_core.searchAllBooks(bookTitle) == nullptr){
+                std::cout << "\nBook Invalid";
+                break;
+            }
+            if (this->m_core.searchUsers(userName) == nullptr){
+                std::cout << "\nUser Invalid";
+                break;
+            }
             ((SuperUser *)this->mp_user)->ReNew(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle), extendedPeriod);
             system("cls");
             //                code to reNew

@@ -108,12 +108,8 @@ OrdinaryUser *Core::searchUsers(int userId) {
 
 OrdinaryUser *Core::searchUsers(std::string userName) {
     OrdinaryUser tempUser;
-    tempUser.
-            changeCompTag(OrdinaryUser::UserNameBase);
-
+    tempUser.changeCompTag(OrdinaryUser::UserNameBase);
     AVL::AvlTree<OrdinaryUser> searchTree(m_all_user_list);
-    tempUser.
-            userNameSetter(userName);
-    return searchTree.
-            search(tempUser);
+    tempUser.userNameSetter(userName);
+    return searchTree.search(tempUser);
 }
