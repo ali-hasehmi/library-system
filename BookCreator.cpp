@@ -15,6 +15,7 @@ int main()
          c.saveToFile();
          d.saveToFile(),
          e.saveToFile(),
+         g.saveToFile();
          f.saveToFile();
          h.saveToFile();
          i.saveToFile();

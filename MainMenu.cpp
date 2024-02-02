@@ -131,10 +131,19 @@ void MainMenu::menu1_normalUser()
             // std::cout << "fuck1\n";
             for (auto &i : ((OrdinaryUser *)this->mp_user)->MyBooks())
             {
-                std::cout << *this->m_core.searchAllBooks(i);
+                Book *_b;
+                if ((_b = (this->m_core.searchAllBooks(i))) != nullptr)
+                {
+                    std::cout << *_b;
+                }
+                else{
+                    std::cout << "NO Book For YOU!\n";
+                }
             }
+            system("pause");
             // std::cout << "fuck2\n";
             getchar();
+
             break;
         case 2:
         {
@@ -189,6 +198,7 @@ void MainMenu::menu1_normalUser()
             // sort books
             system("cls");
             this->m_core.sortAllBooksTitle();
+            system("pause");
             break;
         case 4:
             loopCondition = false;
@@ -254,7 +264,7 @@ void MainMenu::menu1_adminInterface()
                 system("pause");
                 break;
             }
-            if ((_u=this->m_core.searchUsers(userName)) == nullptr)
+            if ((_u = this->m_core.searchUsers(userName)) == nullptr)
             {
                 std::cout << "\nUser Invalid";
                 system("pause");
@@ -262,7 +272,7 @@ void MainMenu::menu1_adminInterface()
             }
             ((SuperUser *)this->mp_user)->giveBook(_u, _b);
 
-            std::cout << "Book is Given To "<< userName  <<" Successfully\n";
+            std::cout << "Book is Given To " << userName << " Successfully\n";
             system("pause");
             // code related to giving book goes here
             break;
