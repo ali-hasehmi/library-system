@@ -54,8 +54,10 @@ void MainMenu::menu0_signUpHandler()
         std::cin >> password;
         OrdinaryUser ou(first_name, last_name, national_code, userName, password);
         res = ou.signUp();
+        std::cout << "end of do While loop\n";
     } while (res);
     std::cout << "user created Successfully;";
+    Sleep(1000);
     system("cls");
 }
 

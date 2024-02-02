@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include <iostream>
 
 template <typename U>
 Node<U>::Node()
@@ -264,8 +265,9 @@ typename LinkedListIterator<LinkedList>::const_pointer LinkedListIterator<Linked
 }
 
 template <typename T>
-inputDataStream &operator>>(inputDataStream &ids, LinkedList<T>& _Dll)
+inputDataStream &operator>>(inputDataStream &ids, LinkedList<T> &_Dll)
 {
+    std::cout << "inputDataStream &operator>>(inputDataStream &ids, LinkedList<T>& _Dll) 1\n";
     size_t tmp_size;
     ids >> tmp_size;
     for (size_t i = 0; i < tmp_size; ++i)
@@ -280,6 +282,7 @@ inputDataStream &operator>>(inputDataStream &ids, LinkedList<T>& _Dll)
 template <typename T>
 outputDataStream &operator<<(outputDataStream &ods, const LinkedList<T> &_Dll)
 {
+    std::cout << "outputDataStream &operator<<(outputDataStream &ods, const LinkedList<T> &_Dll)\n";
     Node<T> *curr = _Dll.mp_head;
     ods << _Dll.m_size;
     while (curr != nullptr)
@@ -287,5 +290,6 @@ outputDataStream &operator<<(outputDataStream &ods, const LinkedList<T> &_Dll)
         ods << curr->m_data;
         curr = curr->mp_next;
     }
+    std::cout << "outputDataStream &operator<<(outputDataStream &ods, const LinkedList<T> &_Dll)\n";
     return ods;
 }
