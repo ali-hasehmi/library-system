@@ -113,7 +113,6 @@ bool MainMenu::menu0_loginHandler()
 
 void MainMenu::menu1_normalUser()
 {
-    Core core(false);
     Menu normalUserMenu1({"Show All Books", "Show My Books", "Search Books", "Sort Books", "Exit"});
     bool loopCondition = true;
     while (loopCondition)
@@ -158,7 +157,6 @@ void MainMenu::menu1_normalUser()
 
 void MainMenu::menu1_adminInterface()
 {
-    Core core(true);
     Menu adminMenu1({"Get Book", "Give Book", "Reserve", "ReNew", "Exit"});
     bool loopCondition = true;
     while (loopCondition)
