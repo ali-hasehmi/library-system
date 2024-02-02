@@ -28,6 +28,7 @@ public:
     bool operator<(const OrdinaryUser &_ou);
     bool operator==(const OrdinaryUser &_ou);
     bool operator!=(const OrdinaryUser &_ou);
+    LinkedList<int64_t> &MyBooks();
     friend inputDataStream &operator>>(inputDataStream &inputStream, OrdinaryUser &_ou);
     friend outputDataStream &operator<<(outputDataStream &outputStream, const OrdinaryUser &_ou);
     void addBook(int64_t _book_id);

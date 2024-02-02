@@ -1,6 +1,7 @@
 #include "MainMenu.h"
 #include <windows.h>
 #include "SuperUser.h"
+#include <string>
 
 MainMenu::MainMenu()
 {
@@ -122,10 +123,14 @@ void MainMenu::menu1_normalUser()
         {
         case 0:
             // show all books
-
+            this->m_core.printBookList();
             break;
         case 1:
             // show my books
+            for (auto &i : ((OrdinaryUser *)this->mp_user)->MyBooks())
+            {
+                this->m_core.searchAllBooks(i);
+            }
             break;
         case 2:
         {
@@ -136,14 +141,25 @@ void MainMenu::menu1_normalUser()
             if (!searchOption)
             {
                 system("cls");
+                int64_t uid;
+                std::cout << "Book ID: ";
+                std::cin >> uid;
+                this->m_core.searchAllBooks(uid);
             }
             else
             {
+                system("cls");
+                std::string t;
+                std::cout << "Book Title: ";
+                std::cin >> t;
+                this->m_core.searchAllBooks(t);
             }
             break;
         }
         case 3:
             // sort books
+            system("cls");
+            this->m_core.sortAllBooksTitle();
             break;
         case 4:
             loopCondition = false;
@@ -222,7 +238,7 @@ void MainMenu::menu1_adminInterface()
             std::cin >> userName;
             std::cout << "Enter time to extend : ";
             std::cin >> extendedPeriod;
-              ((SuperUser *)this->mp_user)->ReNew();
+            ((SuperUser *)this->mp_user)->ReNew();
             system("cls");
             //                code to reNew
             break;
