@@ -4,7 +4,10 @@
 #include <iostream>
 #include "menu.h"
 #include "OrdinaryUser.h"
+#include "Core.h"
+
 class MainMenu {
+    Core core;
 public:
     MainMenu();
 

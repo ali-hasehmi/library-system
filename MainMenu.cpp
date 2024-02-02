@@ -87,6 +87,7 @@ bool MainMenu::menu0_loginHandler() {
 }
 
 void MainMenu::menu1_normalUser() {
+    core
     Menu normalUserMenu1({"Show All Books", "Show My Books", "Search Books", "Sort Books", "Exit"});
     bool loopCondition = true;
     while (loopCondition) {
