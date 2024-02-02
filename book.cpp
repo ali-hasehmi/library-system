@@ -33,7 +33,7 @@ int Book::loadFromFile(const std::string &_file_path) {
 }
 
 int Book::saveToFile() {
-    std::ofstream target_file(BOOK_DIR + this->m_title + ".book");
+    std::ofstream target_file(BOOK_DIR + this->m_title + ".book", std::ios::trunc);
     if (!target_file.is_open()) {
         std::cerr << "Book::loadFromFile(string) : Could not open target file\n";
         return -1;

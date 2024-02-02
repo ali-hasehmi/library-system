@@ -73,7 +73,7 @@ int OrdinaryUser::loadFromFile(const std::string &_file_path)
 
 int OrdinaryUser::saveToFile()
 {
-    std::ofstream target_file(USER_DIR + this->m_user_name + ".user");
+    std::ofstream target_file(USER_DIR + this->m_user_name + ".user", std::ios::trunc);
     if (!target_file.is_open())
     {
         return -1;
