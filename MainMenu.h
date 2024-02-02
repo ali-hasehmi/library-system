@@ -9,6 +9,7 @@
 class MainMenu {
     bool isAdmin;
     AbstractUser* mp_user;
+    Core m_core;
 public:
     MainMenu();
 

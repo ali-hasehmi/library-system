@@ -1,6 +1,8 @@
 #include "Core.h"
 
 Core::Core() {
+    this->loadAllBooks();
+    this->loadAllUsers();
 }
 
 Core::Core(bool isAdmin) {
@@ -47,7 +49,9 @@ void Core::createDir() {
     }
 }
 
+
 Book *Core::searchAllBooks(int64_t argId) {
+
     Book tempBook;
     tempBook.changeCompTag(Book::IDBase);
 
@@ -56,7 +60,9 @@ Book *Core::searchAllBooks(int64_t argId) {
     return searchTree.search(tempBook);
 }
 
+
 Book *Core::searchAllBooks(std::string argTitle) {
+
     Book tempBook;
     tempBook.changeCompTag(Book::TitleBase);
 
@@ -65,16 +71,20 @@ Book *Core::searchAllBooks(std::string argTitle) {
     return searchTree.search(tempBook);
 }
 
+
 void Core::sortAllBooksId() {
     Book temp;
     temp.changeCompTag(Book::IDBase);
+
     AVL::AvlTree<Book> searchTree(m_books_list);
     searchTree.print();
 }
 
+
 void Core::sortAllBooksTitle() {
     Book temp;
     temp.changeCompTag(Book::TitleBase);
+
     AVL::AvlTree<Book> searchTree(m_books_list);
     searchTree.print();
 }
@@ -85,6 +95,7 @@ void Core::printBookList() {
     }
 }
 
+
 OrdinaryUser *Core::searchUsers(int userId) {
     OrdinaryUser tempUser;
     tempUser.changeCompTag(OrdinaryUser::IDBase);
@@ -94,11 +105,15 @@ OrdinaryUser *Core::searchUsers(int userId) {
     return searchTree.search(tempUser);
 }
 
+
 OrdinaryUser *Core::searchUsers(std::string userName) {
     OrdinaryUser tempUser;
-    tempUser.changeCompTag(OrdinaryUser::UserNameBase);
+    tempUser.
+            changeCompTag(OrdinaryUser::UserNameBase);
 
     AVL::AvlTree<OrdinaryUser> searchTree(m_all_user_list);
-    tempUser.userNameSetter(userName);
-    return searchTree.search(tempUser);
+    tempUser.
+            userNameSetter(userName);
+    return searchTree.
+            search(tempUser);
 }
