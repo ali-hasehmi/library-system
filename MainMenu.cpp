@@ -168,7 +168,7 @@ void MainMenu::menu1_normalUser()
                 std::string t;
                 std::cout << "Book Title: ";
                 std::cin >> t;
-                if ((_book =this->m_core.searchAllBooks(t)) != nullptr)
+                if ((_book = this->m_core.searchAllBooks(t)) != nullptr)
                 {
                     system("cls");
                     std::cout << "\nBook exists";
@@ -180,8 +180,8 @@ void MainMenu::menu1_normalUser()
                     std::cout << "\nBook doesn't exist";
                     std::cout << *_book;
                 }
-            getchar();
-            system("pause");
+                getchar();
+                system("pause");
             }
             break;
         }
@@ -246,17 +246,21 @@ void MainMenu::menu1_adminInterface()
             std::cout << "Enter book owner : ";
             std::cin >> userName;
             system("cls");
-            if (this->m_core.searchAllBooks(bookTitle) == nullptr)
+            Book *_b;
+            OrdinaryUser *_u;
+            if ((_b = this->m_core.searchAllBooks(bookTitle)) == nullptr)
             {
                 std::cout << "\nBook Invalid";
+                system("pause");
                 break;
             }
-            if (this->m_core.searchUsers(userName) == nullptr)
+            if ((_u=this->m_core.searchUsers(userName)) == nullptr)
             {
                 std::cout << "\nUser Invalid";
+                system("pause");
                 break;
             }
-            ((SuperUser *)this->mp_user)->giveBook(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle));
+            ((SuperUser *)this->mp_user)->giveBook(_u, _b);
             // code related to giving book goes here
             break;
         }

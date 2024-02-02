@@ -15,12 +15,19 @@ int SuperUser::getBook(OrdinaryUser *_user, Book *_book)
 
 int SuperUser::giveBook(OrdinaryUser *_user, Book *_book)
 {
+    std::cout << "int SuperUser::giveBook(OrdinaryUser *_user, Book *_book) : started\n";
     if (_book->isReservationEmpty())
     {
+        std::cout << "int SuperUser::giveBook(OrdinaryUser *_user, Book *_book) : reservation is empty\n";
         _user->addBook(_book->id());
+        std::cout << "int SuperUser::giveBook(OrdinaryUser *_user, Book *_book) : book added\n";
         _book->setAsUnAvailable();
+        std::cout << "int SuperUser::giveBook(OrdinaryUser *_user, Book *_book) : set as unAvailable\n";
+
         return 0;
     }
+    std::cout << "int SuperUser::giveBook(OrdinaryUser *_user, Book *_book) : reservation is not empty\n";
+
     if (_book->FirstUserID() == _user->id())
     {
         _user->addBook(_book->id());
