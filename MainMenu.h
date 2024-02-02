@@ -7,7 +7,7 @@
 #include "Core.h"
 
 class MainMenu {
-    Core core;
+    bool isAdmin;
 public:
     MainMenu();
 

@@ -3,6 +3,15 @@
 Core::Core() {
 }
 
+Core::Core(bool isAdmin) {
+    if (isAdmin) {
+        loadAllBooks();
+        loadAllUsers();
+    } else {
+        loadAllBooks();
+    }
+}
+
 void Core::loadAllBooks() {
     for (const auto &entry: std::filesystem::directory_iterator(BOOK_DIR)) {
         if (std::filesystem::is_regular_file(entry)) {

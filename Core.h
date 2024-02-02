@@ -12,8 +12,9 @@ class Core {
 public:
     Core();
 
+    Core(bool isAdmin);
     static void createDir();
-    
+
     void searchAllBooks(int64_t argId);
 
     void searchAllBooks(std::string argTitle);
