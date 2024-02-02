@@ -5,6 +5,10 @@
 #include <string>
 #include "datastream.h"
 #include "queue.h"
+#include <fstream>
+
+#define BOOK_DIR "./book/"
+
 class OrdinaryUser;
 class Book
 {
@@ -25,6 +29,8 @@ public:
     };
     Book(const std::string &_title, const std::string &_author, const std::string &_publish_date, Genre _genre);
     Book();
+    int loadFromFile(const std::string &_file_path);
+    int saveToFile();
     friend inputDataStream &operator>>(inputDataStream &inputStream, Book &_book);
     friend outputDataStream &operator<<(outputDataStream &outputStream, const Book &_book);
     friend inputDataStream &operator>>(inputDataStream &inputStream, Genre &_genre);

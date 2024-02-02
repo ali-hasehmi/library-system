@@ -70,3 +70,16 @@ queue<T>::~queue()
 {
     delete[] dataArray;
 }
+
+
+template<typename U>
+ outputDataStream & operator<<(outputDataStream & osd, const queue<U>& _q)
+{
+    
+}
+
+template <typename U>
+inputDataStream &operator>>(inputDataStream &isd, const queue<U> &_q)
+{
+    // TODO: insert return statement here
+}

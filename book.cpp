@@ -20,6 +20,32 @@ Book::Book()
     this->m_id = rand();
 }
 
+int Book::loadFromFile(const std::string &_file_path)
+{
+    std::ifstream target_file(BOOK_DIR + _file_path);
+    if(!target_file.is_open()){
+        std::cerr << "Book::loadFromFile(string) : Could not open target file\n";
+        return -1;
+    }
+    inputDataStream ids(&target_file);
+    ids >> *this;
+    target_file.close();
+    return 0;
+}
+
+int Book::saveToFile()
+{
+    std::ofstream target_file(BOOK_DIR + this->m_title + ".book");
+    if(!target_file.is_open()){
+        std::cerr << "Book::loadFromFile(string) : Could not open target file\n";
+        return -1;
+    }
+    outputDataStream ids(&target_file);
+    ids << *this;
+    target_file.close();
+    return 0;
+}
+
 void Book::changeCompTag(const CompTag _tag)
 {
     ms_comp_tag_book = _tag;
@@ -40,7 +66,7 @@ inputDataStream &operator>>(inputDataStream &inputStream, Book &_book)
 {
     inputStream >> _book.m_title >> _book.m_author >>
         _book.m_id >> _book.m_genre >> _book.m_give_time >>
-        _book.m_publish_date >> _book.m_is_available;
+        _book.m_publish_date >> _book.m_is_available >>_book.m_reservation_queue;
     return inputStream;
 }
 
@@ -48,7 +74,7 @@ outputDataStream &operator<<(outputDataStream &outputStream, const Book &_book)
 {
     outputStream << _book.m_title << _book.m_author
                  << _book.m_id << _book.m_genre << _book.m_give_time
-                 << _book.m_publish_date << _book.m_is_available;
+                 << _book.m_publish_date << _book.m_is_available << _book.m_reservation_queue;
 
     return outputStream;
 }
