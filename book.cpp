@@ -151,7 +151,7 @@ bool Book::operator!=(const Book &_b) const{
 }
 
 int64_t Book::id() {
-    this->m_id;
+   return this->m_id;
 }
 
 std::string Book::title() {

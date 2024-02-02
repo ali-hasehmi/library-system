@@ -261,6 +261,9 @@ void MainMenu::menu1_adminInterface()
                 break;
             }
             ((SuperUser *)this->mp_user)->giveBook(_u, _b);
+
+            std::cout << "Book is Given To "<< userName  <<" Successfully\n";
+            system("pause");
             // code related to giving book goes here
             break;
         }

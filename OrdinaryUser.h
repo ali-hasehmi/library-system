@@ -31,7 +31,7 @@ public:
     LinkedList<int64_t> &MyBooks();
     friend inputDataStream &operator>>(inputDataStream &inputStream, OrdinaryUser &_ou);
     friend outputDataStream &operator<<(outputDataStream &outputStream, const OrdinaryUser &_ou);
-    void addBook(int64_t _book_id);
+    void addBook(const int64_t& _book_id);
     void removeBook(int64_t _book_id);
     int  calculatePenalty(int64_t _diff);
     void idSetter(int id);
