@@ -144,9 +144,12 @@ void MainMenu::menu1_normalUser()
                 int64_t uid;
                 std::cout << "Book ID: ";
                 std::cin >> uid;
-                if(this->m_core.searchAllBooks(uid) != nullptr){
+                if (this->m_core.searchAllBooks(uid) != nullptr)
+                {
                     std::cout << "\nBook exists";
-                }else{
+                }
+                else
+                {
                     std::cout << "\nBook doesn't exist";
                 }
             }
@@ -156,9 +159,12 @@ void MainMenu::menu1_normalUser()
                 std::string t;
                 std::cout << "Book Title: ";
                 std::cin >> t;
-                if(this->m_core.searchAllBooks(t) != nullptr){
+                if (this->m_core.searchAllBooks(t) != nullptr)
+                {
                     std::cout << "\nBook exists";
-                }else{
+                }
+                else
+                {
                     std::cout << "\nBook doesn't exist";
                 }
             }
@@ -198,11 +204,13 @@ void MainMenu::menu1_adminInterface()
             std::cin >> bookTitle;
             std::cout << "Enter userName : ";
             std::cin >> userName;
-            if(this->m_core.searchAllBooks(bookTitle) == nullptr){
+            if (this->m_core.searchAllBooks(bookTitle) == nullptr)
+            {
                 std::cout << "\nBook Invalid";
                 break;
             }
-            if (this->m_core.searchUsers(userName) == nullptr){
+            if (this->m_core.searchUsers(userName) == nullptr)
+            {
                 std::cout << "\nUser Invalid";
                 break;
             }
@@ -223,11 +231,13 @@ void MainMenu::menu1_adminInterface()
             std::cout << "Enter book owner : ";
             std::cin >> userName;
             system("cls");
-            if(this->m_core.searchAllBooks(bookTitle) == nullptr){
+            if (this->m_core.searchAllBooks(bookTitle) == nullptr)
+            {
                 std::cout << "\nBook Invalid";
                 break;
             }
-            if (this->m_core.searchUsers(userName) == nullptr){
+            if (this->m_core.searchUsers(userName) == nullptr)
+            {
                 std::cout << "\nUser Invalid";
                 break;
             }
@@ -245,11 +255,13 @@ void MainMenu::menu1_adminInterface()
             std::cin >> bookTitle;
             std::cout << "Enter book owner : ";
             std::cin >> userName;
-            if(this->m_core.searchAllBooks(bookTitle) == nullptr){
+            if (this->m_core.searchAllBooks(bookTitle) == nullptr)
+            {
                 std::cout << "\nBook Invalid";
                 break;
             }
-            if (this->m_core.searchUsers(userName) == nullptr){
+            if (this->m_core.searchUsers(userName) == nullptr)
+            {
                 std::cout << "\nUser Invalid";
                 break;
             }
@@ -271,11 +283,13 @@ void MainMenu::menu1_adminInterface()
             std::cin >> userName;
             std::cout << "Enter time to extend : ";
             std::cin >> extendedPeriod;
-            if(this->m_core.searchAllBooks(bookTitle) == nullptr){
+            if (this->m_core.searchAllBooks(bookTitle) == nullptr)
+            {
                 std::cout << "\nBook Invalid";
                 break;
             }
-            if (this->m_core.searchUsers(userName) == nullptr){
+            if (this->m_core.searchUsers(userName) == nullptr)
+            {
                 std::cout << "\nUser Invalid";
                 break;
             }
