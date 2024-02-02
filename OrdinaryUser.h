@@ -23,7 +23,8 @@ public:
     bool operator<(const OrdinaryUser &_ou);
     bool operator==(const OrdinaryUser &_ou);
     bool operator!=(const OrdinaryUser &_ou);
-
+    friend inputDataStream &operator>>(inputDataStream &inputStream, OrdinaryUser &_ou);
+    friend outputDataStream &operator<<(outputDataStream &outputStream, const OrdinaryUser &_ou);
 private:
     int64_t m_penalty;
     int64_t m_id;

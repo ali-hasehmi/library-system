@@ -15,11 +15,12 @@ public:
     virtual int saveToFile() = 0;
 
 protected:
-    AbstractUser(const std::string &_first_name, const std::string &_last_name, const std::string &_national_code, const std::string &_user_name);
+    AbstractUser(const std::string &_first_name, const std::string &_last_name, const std::string &_national_code, const std::string &_user_name,const std::string &_password);
     std::string m_first_name;
     std::string m_last_name;
     std::string m_national_code;
     std::string m_user_name;
+    std::string m_password;
 };
 
 #endif // ABSTRACT_USER_H

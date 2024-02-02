@@ -9,7 +9,9 @@ AbstractUser *OrdinaryUser::logIn(const std::string &_user_name, const std::stri
 
 int OrdinaryUser::loadFromFile(const std::string &_file_path)
 {
-    
+    std::ifstream target_file(USER_DIR + _file_path);
+    inputDataStream isd(&target_file);
+    isd >> *this;
 }
 
 int OrdinaryUser::saveToFile()
@@ -68,4 +70,10 @@ bool OrdinaryUser::operator!=(const OrdinaryUser &_ou)
     {
         return this->m_id != _ou.m_id;
     }
+}
+
+inputDataStream &operator>>(inputDataStream &inputStream, OrdinaryUser &_ou)
+{
+    inputStream >> _ou.m_first_name >> _ou.m_last_name
+                >> _ou.m_national_code >> _ou.user
 }
