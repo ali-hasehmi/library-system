@@ -46,6 +46,7 @@ public:
     void setAsAvailable();
     void setAsUnAvailable();
     int64_t FirstUserID();
+    int64_t giveTime();
     // friend std::istream& operator>>(std::istream &is,Book& _book);
 private:
     std::string genreEnumToString(const Book::Genre &_genre) const;

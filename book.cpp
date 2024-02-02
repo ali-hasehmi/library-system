@@ -68,6 +68,11 @@ int64_t Book::FirstUserID()
     this->m_reservation_queue.front();
 }
 
+int64_t Book::giveTime()
+{
+    return this->m_give_time;
+}
+
 std::string Book::genreEnumToString(const Book::Genre &_genre) const
 {
     std::string s[] = {
