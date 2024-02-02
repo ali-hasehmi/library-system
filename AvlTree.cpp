@@ -43,7 +43,7 @@ namespace AVL {
     template<typename U>
     Node<U> *AvlTree<U>::rightRotate(Node<U> *y) {
         Node<U> *x = y->leftChild;
-        Node<U> *T2 = y->rightChild;
+        Node<U> *T2 = x->rightChild;
 //        rotations
         x->rightChild = y;
         y->leftChild = T2;
@@ -57,7 +57,7 @@ namespace AVL {
 
     template<typename U>
     Node<U> *AvlTree<U>::leftRotate(Node<U> *x) {
-        Node<U> *y = x->leftChild;
+        Node<U> *y = x->rightChild;
         Node<U> *T2 = y->leftChild;
 //        rotations
         y->leftChild = x;
@@ -80,50 +80,46 @@ namespace AVL {
 
 //    returns new root
     template<typename U>
-    Node<U> *AvlTree<U>::insert(Node<U> *argNewNode, U argData) {
-        if (argNewNode == nullptr) {
-            Node<U> *newNode = new Node<U>(argData);
-//            Node<U> newNode;
-//            newNode.data = argData;
-//            newNode->data = argData;
-            return newNode;
+    Node<U> *AvlTree<U>::insert(Node<U> *argNode, U argData) {
+        if (argNode == nullptr) {
+            return newNode(argData);
         }
-
-        if (argData < argNewNode->data) {
-            argNewNode->leftChild = insert(argNewNode->leftChild, argData);
-        } else if (argData > argNewNode->data) {
-            argNewNode->rightChild = insert(argNewNode->rightChild, argData);
+        
+        if (argData < argNode->data) {
+            argNode->leftChild = insert(argNode->leftChild, argData);
+        } else if (argData > argNode->data) {
+            argNode->rightChild = insert(argNode->rightChild, argData);
         } else { // equal keys
-            return argNewNode;
+            return argNode;
         }
 //        update height of ansector node
-        argNewNode->height = 1 + max(height(argNewNode->leftChild), height(argNewNode->rightChild));
+        argNode->height = 1 + max(height(argNode->leftChild), height(argNode->rightChild));
 
 //        get balance
-        int balance = getBalance(argNewNode);
+        int balance = getBalance(argNode);
 
 //        4 cases if unbalanced
 
 //        ll
-        if (balance > 1 && argData < argNewNode->leftChild->data) {
-            return rightRotate(argNewNode);
+        if (balance > 1 && argData < argNode->leftChild->data) {
+            return rightRotate(argNode);
         }
 //        rr
-        if (balance < -1 && argData > argNewNode->rightChild->data) {
-            return leftRotate(argNewNode);
+        if (balance < -1 && argData > argNode->rightChild->data) {
+            return leftRotate(argNode);
         }
 //        lr
-        if (balance > 1 && argData > argNewNode->leftChild->data) {
-            argNewNode->leftChild = leftRotate(argNewNode->leftChild);
-            return rightRotate(argNewNode);
+        if (balance > 1 && argData > argNode->leftChild->data) {
+            argNode->leftChild = leftRotate(argNode->leftChild);
+            return rightRotate(argNode);
         }
 //        rl
-        if (balance < -1 && argData < argNewNode->rightChild->data) {
-            argNewNode->rightChild = rightRotate(argNewNode->rightChild);
-            return leftRotate(argNewNode);
+        if (balance < -1 && argData < argNode->rightChild->data) {
+            argNode->rightChild = rightRotate(argNode->rightChild);
+            return leftRotate(argNode);
         }
 
-        return argNewNode;
+        return argNode;
     }
 
     template<typename U>
@@ -187,8 +183,34 @@ namespace AVL {
     AvlTree<U>::AvlTree(int dataArray[], int size) {
         root = nullptr;
         for (int i = 0; i < size; ++i) {
+//            std::cout << dataArray[i] << std::endl;
             root = insert(root, dataArray[i]);
         }
+    }
+
+    template<typename U>
+    int AvlTree<U>::max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+
+    template<typename U>
+    int AvlTree<U>::height(Node<U> *argNode) {
+        if (argNode == nullptr) {
+            return 0;
+        } else {
+            return argNode->height;
+        }
+
+    }
+
+    template<typename U>
+    Node<U> *AvlTree<U>::newNode(const U &key) {
+        Node<U> *node = new Node<U>;
+        node->data = key;
+        node->rightChild = nullptr;
+        node->leftChild = nullptr;
+        node->height = 1;
+        return node;
     }
 
 

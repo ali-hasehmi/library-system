@@ -53,17 +53,12 @@ namespace AVL {
         void search(const U &target);
 
         //overload == and >< and cout
-        int max(int a, int b) {
-            return (a > b) ? a : b;
-        }
+        int max(int a, int b);
 
-        int height(Node<U> *argNode) {
-            if (argNode == nullptr) {
-                return 0;
-            } else {
-                return argNode->height;
-            }
-        }
+        int height(Node<U> *argNode);
+
+        Node<U>* newNode(const U& key);
+
     };
 
 
