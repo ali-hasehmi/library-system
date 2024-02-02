@@ -55,7 +55,7 @@ void Book::setAsAvailable() {
 void Book::setAsUnAvailable() {
 
     using namespace std::chrono;
-    this->m_give_time = duration_cast<days>(std::chrono::system_clock::now().time_since_epoch());
+    this->m_give_time = duration_cast<days>(std::chrono::system_clock::now().time_since_epoch()).count();
     this->m_is_available = false;
 }
 
