@@ -9,3 +9,8 @@ AbstractUser::AbstractUser(const std::string &_first_name, const std::string &_l
 {
     this->m_id = rand();
 }
+
+int AbstractUser::id()
+{
+    return this->m_id;
+}

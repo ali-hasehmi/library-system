@@ -8,7 +8,7 @@ class SuperUser : public AbstractUser
 {
 public:
     SuperUser();
-    void getBook(OrdinaryUser *_user, Book *_book);
+    int  getBook(OrdinaryUser *_user, Book *_book);
     int giveBook(OrdinaryUser *_user, Book *_book);
     int Reserve(OrdinaryUser *_user, Book *_book);
     int ReNew(OrdinaryUser *_user, Book *_book);

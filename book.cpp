@@ -73,6 +73,11 @@ int64_t Book::giveTime()
     return this->m_give_time;
 }
 
+bool Book::isReservationEmpty()
+{
+    return this->m_reservation_queue.isEmpty();
+}
+
 std::string Book::genreEnumToString(const Book::Genre &_genre) const
 {
     std::string s[] = {
@@ -178,4 +183,12 @@ int64_t Book::id()
 std::string Book::title()
 {
     return this->m_title;
+}
+
+void Book::popLastUserID()
+{
+    if (!this->m_reservation_queue.isEmpty())
+    {
+        this->m_reservation_queue.dequeue();
+    }
 }

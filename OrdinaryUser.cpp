@@ -143,6 +143,15 @@ void OrdinaryUser::removeBook(int64_t _book_id)
     this->m_user_book_id_list.remove(_book_id);
 }
 
+int OrdinaryUser::calculatePenalty(int64_t _diff)
+{
+    if(_diff <0 ){
+        return 0;
+    }
+    this->m_penalty += _diff * 5;
+    return _diff * 5;
+}
+
 inputDataStream &operator>>(inputDataStream &inputStream, OrdinaryUser &_ou)
 {
     inputStream >> _ou.m_first_name >> _ou.m_last_name >> _ou.m_national_code >> _ou.m_password >>

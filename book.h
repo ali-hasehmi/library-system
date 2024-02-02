@@ -42,11 +42,13 @@ public:
     bool operator!=(const Book &_b);
     int64_t id();
     std::string title();
+    void popLastUserID();
     static void changeCompTag(const CompTag _tag);
     void setAsAvailable();
     void setAsUnAvailable();
     int64_t FirstUserID();
     int64_t giveTime();
+    bool isReservationEmpty();
     // friend std::istream& operator>>(std::istream &is,Book& _book);
 private:
     std::string genreEnumToString(const Book::Genre &_genre) const;
