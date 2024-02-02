@@ -230,14 +230,16 @@ void MainMenu::menu1_adminInterface()
             std::cin >> bookTitle;
             std::cout << "Enter userName : ";
             std::cin >> userName;
-            if (this->m_core.searchAllBooks(bookTitle) == nullptr)
+            Book *_b;
+            OrdinaryUser*_u;
+            if ((_b=this->m_core.searchAllBooks(bookTitle)) == nullptr)
             {
                 system("cls");
                 std::cout << "\nBook Invalid";
                 system("pause");
                 break;
             }
-            if (this->m_core.searchUsers(userName) == nullptr)
+            if ((_u=this->m_core.searchUsers(userName)) == nullptr)
             {
                 system("cls");
                 std::cout << "\nUser Invalid";
@@ -245,7 +247,7 @@ void MainMenu::menu1_adminInterface()
                 break;
             }
             system("cls");
-            std::cout << "The Penalty : " << ((SuperUser *)this->mp_user)->getBook(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle)) << std::endl;
+            std::cout << "The Penalty : " << ((SuperUser *)this->mp_user)->getBook(_u, _b) << std::endl;
             system("pause");
             // code related to changing book ownership goes here
             break;
