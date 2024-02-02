@@ -11,7 +11,7 @@ public:
     int  getBook(OrdinaryUser *_user, Book *_book);
     int giveBook(OrdinaryUser *_user, Book *_book);
     int Reserve(OrdinaryUser *_user, Book *_book);
-    int ReNew(OrdinaryUser *_user, Book *_book);
+    int ReNew(OrdinaryUser *_user, Book *_book,int64_t _days);
     
 private:
 };

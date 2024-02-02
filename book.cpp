@@ -1,5 +1,6 @@
 #include "book.h"
 #include <string>
+#include <chrono>
 
 Book::CompTag Book::ms_comp_tag_book = Book::TitleBase;
 
@@ -52,6 +53,9 @@ void Book::setAsAvailable() {
 }
 
 void Book::setAsUnAvailable() {
+
+    using namespace std::chrono;
+    this->m_give_time = duration_cast<days>(std::chrono::system_clock::now().time_since_epoch());
     this->m_is_available = false;
 }
 
@@ -166,4 +170,14 @@ void Book::idSetter(const int64_t &argId) {
 
 void Book::titleSetter(const std::string &argTitle) {
     this->m_title = argTitle;
+}
+
+void Book::addReserve(const int64_t &_user_id)
+{
+    this->m_reservation_queue.enqueue(_user_id);
+}
+
+void Book::renew(int64_t _days)
+{
+    this->m_give_time += _days;
 }

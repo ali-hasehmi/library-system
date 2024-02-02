@@ -53,6 +53,7 @@ public:
 
     bool operator!=(const Book &_b);
 
+
     int64_t id();
 
     std::string title();
@@ -75,6 +76,9 @@ public:
 
     void titleSetter(const std::string &argTitle);
 
+    void addReserve(const int64_t& _user_id);
+
+    void renew(int64_t _days);
     // friend std::istream& operator>>(std::istream &is,Book& _book);
 private:
     std::string genreEnumToString(const Book::Genre &_genre) const;
