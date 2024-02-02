@@ -55,6 +55,7 @@ void MainMenu::menu0_signUpHandler()
         OrdinaryUser ou(first_name, last_name, national_code, userName, password);
         res = ou.signUp();
     } while (res);
+    std::cout << "user created Successfully;";
     system("cls");
 }
 
