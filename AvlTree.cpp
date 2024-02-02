@@ -35,7 +35,7 @@ namespace AVL
     {
         //            construct tree
         std::cout << "AvlTree<U>::AvlTree(const LinkedList<U> &argLinkedList): started\n";
-        std::cout << "List Size: " << argLinkedList.size() <<std::endl;
+        std::cout << "List Size: " << argLinkedList.size() << std::endl;
         for (auto &i : argLinkedList)
         {
             std::cout << "inLOOP1\n";
@@ -89,7 +89,7 @@ namespace AVL
 
     //    returns new root
     template <typename U>
-    Node<U> *AvlTree<U>::insert(Node<U> *argNode,const U& argData)
+    Node<U> *AvlTree<U>::insert(Node<U> *argNode, const U &argData)
     {
 
         std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : started\n";
@@ -123,8 +123,8 @@ namespace AVL
         std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : updateHeight\n";
 
         //        update height of ansector node
-        if(argNode != nullptr)
-        argNode->height = 1 + max(height(argNode->leftChild), height(argNode->rightChild));
+        if (argNode != nullptr)
+            argNode->height = 1 + max(height(argNode->leftChild), height(argNode->rightChild));
 
         std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : getBalance\n";
 
@@ -233,7 +233,16 @@ namespace AVL
 //            std::cout << "\nBook is not found";
         }
 */
-        return &recursiveBstSearch(root, target)->data;
+        auto res = recursiveBstSearch(root, target);
+        if (res == nullptr)
+        {
+            return nullptr;
+        }
+        else
+        {
+            return &(res->data);
+        }
+        // return &recursiveBstSearch(root, target)->data;
     }
 
     template <typename U>
