@@ -8,6 +8,7 @@
 
 class MainMenu {
     bool isAdmin;
+    AbstractUser* mp_user;
 public:
     MainMenu();
 
