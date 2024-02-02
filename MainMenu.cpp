@@ -129,7 +129,7 @@ void MainMenu::menu1_normalUser()
             // show my books
             for (auto &i : ((OrdinaryUser *)this->mp_user)->MyBooks())
             {
-                this->m_core.searchAllBooks(i);
+                std::cout << *this->m_core.searchAllBooks(i);
             }
             break;
         case 2:
@@ -190,7 +190,7 @@ void MainMenu::menu1_adminInterface()
             std::cin >> bookTitle;
             std::cout << "Enter book owner : ";
             std::cin >> userName;
-            ((SuperUser*)this->mp_user)->getBook();
+            ((SuperUser *)this->mp_user)->getBook(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle));
             system("cls");
             // code related to changing book ownership goes here
             break;
@@ -206,7 +206,7 @@ void MainMenu::menu1_adminInterface()
             std::cout << "Enter book owner : ";
             std::cin >> userName;
             system("cls");
-            ((SuperUser *)this->mp_user)->giveBook();
+            ((SuperUser *)this->mp_user)->giveBook(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle));
             // code related to giving book goes here
             break;
         }
@@ -220,7 +220,7 @@ void MainMenu::menu1_adminInterface()
             std::cin >> bookTitle;
             std::cout << "Enter book owner : ";
             std::cin >> userName;
-            ((SuperUser *)this->mp_user)->Reserve();
+            ((SuperUser *)this->mp_user)->Reserve(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle));
             system("cls");
             //                code related to reserving book
             break;
@@ -238,7 +238,7 @@ void MainMenu::menu1_adminInterface()
             std::cin >> userName;
             std::cout << "Enter time to extend : ";
             std::cin >> extendedPeriod;
-            ((SuperUser *)this->mp_user)->ReNew();
+            ((SuperUser *)this->mp_user)->ReNew(this->m_core.searchUsers(userName), this->m_core.searchAllBooks(bookTitle), extendedPeriod);
             system("cls");
             //                code to reNew
             break;
