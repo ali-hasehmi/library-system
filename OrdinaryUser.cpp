@@ -90,7 +90,7 @@ void OrdinaryUser::changeCompTag(const CompTag &_tag)
     ms_comp_tag_user = _tag;
 }
 
-bool OrdinaryUser::operator>(const OrdinaryUser &_ou)
+bool OrdinaryUser::operator>(const OrdinaryUser &_ou)const
 {
     if (ms_comp_tag_user == OrdinaryUser::UserNameBase)
     {
@@ -102,7 +102,7 @@ bool OrdinaryUser::operator>(const OrdinaryUser &_ou)
     }
 }
 
-bool OrdinaryUser::operator<(const OrdinaryUser &_ou)
+bool OrdinaryUser::operator<(const OrdinaryUser &_ou)const
 {
     if (ms_comp_tag_user == OrdinaryUser::UserNameBase)
     {
@@ -114,7 +114,7 @@ bool OrdinaryUser::operator<(const OrdinaryUser &_ou)
     }
 }
 
-bool OrdinaryUser::operator==(const OrdinaryUser &_ou)
+bool OrdinaryUser::operator==(const OrdinaryUser &_ou)const
 {
     if (ms_comp_tag_user == OrdinaryUser::UserNameBase)
     {
@@ -126,7 +126,7 @@ bool OrdinaryUser::operator==(const OrdinaryUser &_ou)
     }
 }
 
-bool OrdinaryUser::operator!=(const OrdinaryUser &_ou)
+bool OrdinaryUser::operator!=(const OrdinaryUser &_ou)const
 {
     if (ms_comp_tag_user == OrdinaryUser::UserNameBase)
     {

@@ -42,7 +42,7 @@ namespace AVL {
         int getBalance(Node<U> *argNode);
 
         //returns the new root
-        Node<U> *insert(Node<U> *argRoot, U argData);
+        Node<U> *insert(Node<U> *argRoot,const  U& argData);
 
         void inOrder(Node<U> *argRoot);
 

@@ -114,7 +114,7 @@ std::ostream &operator<<(std::ostream &os, const Book &_book) {
     return os;
 }
 
-bool Book::operator<(const Book &_b) {
+bool Book::operator<(const Book &_b)const {
     if (ms_comp_tag_book == CompTag::TitleBase) {
         return this->m_title < _b.m_title;
     }
@@ -123,7 +123,7 @@ bool Book::operator<(const Book &_b) {
     }
 }
 
-bool Book::operator>(const Book &_b) {
+bool Book::operator>(const Book &_b)const {
     if (ms_comp_tag_book == CompTag::TitleBase) {
         return this->m_title > _b.m_title;
     }
@@ -132,7 +132,7 @@ bool Book::operator>(const Book &_b) {
     }
 }
 
-bool Book::operator==(const Book &_b) {
+bool Book::operator==(const Book &_b) const{
     if (ms_comp_tag_book == CompTag::TitleBase) {
         return this->m_title == _b.m_title;
     }
@@ -141,7 +141,7 @@ bool Book::operator==(const Book &_b) {
     }
 }
 
-bool Book::operator!=(const Book &_b) {
+bool Book::operator!=(const Book &_b) const{
     if (ms_comp_tag_book == CompTag::TitleBase) {
         return this->m_title != _b.m_title;
     }

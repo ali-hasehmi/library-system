@@ -45,13 +45,13 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const Book &_book);
 
-    bool operator<(const Book &_b);
+    bool operator<(const Book &_b)const;
 
-    bool operator>(const Book &_b);
+    bool operator>(const Book &_b)const ;
 
-    bool operator==(const Book &_b);
+    bool operator==(const Book &_b)const;
 
-    bool operator!=(const Book &_b);
+    bool operator!=(const Book &_b)const;
 
 
     int64_t id();

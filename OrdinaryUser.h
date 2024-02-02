@@ -24,10 +24,10 @@ public:
     virtual int loadFromFile(const std::string &_file_path) override;
     virtual int saveToFile() override;
     static void changeCompTag(const CompTag &_tag);
-    bool operator>(const OrdinaryUser &_ou);
-    bool operator<(const OrdinaryUser &_ou);
-    bool operator==(const OrdinaryUser &_ou);
-    bool operator!=(const OrdinaryUser &_ou);
+    bool operator>(const OrdinaryUser &_ou)const;
+    bool operator<(const OrdinaryUser &_ou)const ;
+    bool operator==(const OrdinaryUser &_ou)const;
+    bool operator!=(const OrdinaryUser &_ou)const;
     LinkedList<int64_t> &MyBooks();
     friend inputDataStream &operator>>(inputDataStream &inputStream, OrdinaryUser &_ou);
     friend outputDataStream &operator<<(outputDataStream &outputStream, const OrdinaryUser &_ou);

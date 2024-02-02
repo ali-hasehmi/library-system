@@ -89,7 +89,7 @@ namespace AVL
 
     //    returns new root
     template <typename U>
-    Node<U> *AvlTree<U>::insert(Node<U> *argNode, U argData)
+    Node<U> *AvlTree<U>::insert(Node<U> *argNode,const U& argData)
     {
 
         std::cout << "Node<U> *AvlTree<U>::insert(Node<U>* , U ) : started\n";
