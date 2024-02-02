@@ -97,7 +97,7 @@ bool MainMenu::menu0_loginHandler()
             /*        compare passwords for user
                     if (passwordCompare == true) */
             OrdinaryUser ou;
-            if ((this->mp_user = ou.logIn(userName, userPassword))== nullptr)
+            if ((this->mp_user = ou.logIn(userName, userPassword)) == nullptr)
             {
                 std::cout << "user not found\n";
             }
@@ -176,12 +176,14 @@ void MainMenu::menu1_adminInterface()
             std::cin >> bookTitle;
             std::cout << "Enter book owner : ";
             std::cin >> userName;
+            ((SuperUser*)this->mp_user)->getBook(///something in here/// searching by username,);
             system("cls");
             // code related to changing book ownership goes here
             break;
         }
         case 1:
         {
+            // Give Book
             system("cls");
             std::string bookTitle;
             std::string userName;
@@ -190,11 +192,13 @@ void MainMenu::menu1_adminInterface()
             std::cout << "Enter book owner : ";
             std::cin >> userName;
             system("cls");
+            ((SuperUser *)this->mp_user)->giveBook();
             // code related to giving book goes here
             break;
         }
         case 2:
         {
+            // Reserve
             system("cls");
             std::string bookTitle;
             std::string userName;
@@ -202,12 +206,14 @@ void MainMenu::menu1_adminInterface()
             std::cin >> bookTitle;
             std::cout << "Enter book owner : ";
             std::cin >> userName;
+            ((SuperUser *)this->mp_user)->Reserve();
             system("cls");
             //                code related to reserving book
             break;
         }
         case 3:
         {
+            // ReNew
             system("cls");
             std::string bookTitle;
             std::string userName;
@@ -218,6 +224,7 @@ void MainMenu::menu1_adminInterface()
             std::cin >> userName;
             std::cout << "Enter time to extend : ";
             std::cin >> extendedPeriod;
+              ((SuperUser *)this->mp_user)->ReNew();
             system("cls");
             //                code to reNew
             break;
