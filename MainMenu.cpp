@@ -190,7 +190,7 @@ void MainMenu::menu1_adminInterface()
             std::cin >> bookTitle;
             std::cout << "Enter book owner : ";
             std::cin >> userName;
-            ((SuperUser*)this->mp_user)->getBook(///something in here/// searching by username,);
+            ((SuperUser*)this->mp_user)->getBook();
             system("cls");
             // code related to changing book ownership goes here
             break;
