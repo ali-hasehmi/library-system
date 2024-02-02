@@ -16,9 +16,9 @@ public:
 
     static void createDir();
 
-    void searchAllBooks(int64_t argId);
+    Book *searchAllBooks(int64_t argId);
 
-    void searchAllBooks(std::string argTitle);
+    Book *searchAllBooks(std::string argTitle);
 
     void sortAllBooksId();
 
@@ -26,9 +26,9 @@ public:
 
     void printBookList();
 
-    void searchUsers(int userId);
+    OrdinaryUser *searchUsers(int userId);
 
-    void searchUsers(std::string userName);
+    OrdinaryUser *searchUsers(std::string userName);
 
 private:
     void loadAllBooks();

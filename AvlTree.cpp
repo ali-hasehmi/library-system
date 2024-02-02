@@ -3,8 +3,8 @@
 namespace AVL {
     template<typename T>
     Node<T>::Node():leftChild(nullptr),
-                     rightChild(nullptr),
-                     height(1) {
+                    rightChild(nullptr),
+                    height(1) {
     }
 
 
@@ -83,7 +83,7 @@ namespace AVL {
         if (argNode == nullptr) {
             return newNode(argData);
         }
-        
+
         if (argData < argNode->data) {
             argNode->leftChild = insert(argNode->leftChild, argData);
         } else if (argData > argNode->data) {
@@ -169,13 +169,14 @@ namespace AVL {
 //    main search
 //make pointer to function in class itself
     template<typename U>
-    void AvlTree<U>::search(const U &target) {
-        if (recursiveBstSearch(root, target) == nullptr) {
-            std::cout << "\nBook is found";
+    U *AvlTree<U>::search(const U &target) {
+        /*if (recursiveBstSearch(root, target) == nullptr) {
+//            std::cout << "\nBook is found";
         } else {
-            std::cout << "\nBook is not found";
+//            std::cout << "\nBook is not found";
         }
-
+*/
+        return &recursiveBstSearch(root, target)->data;
     }
 
     template<typename U>

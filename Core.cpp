@@ -47,56 +47,58 @@ void Core::createDir() {
     }
 }
 
-void Core::searchAllBooks(int64_t argId) {
-    for (auto &i: m_books_list) {
-        i.changeCompTag(Book::IDBase);
-    }
-    AVL::AvlTree<Book> searchTree(m_books_list);
+Book *Core::searchAllBooks(int64_t argId) {
     Book tempBook;
+    tempBook.changeCompTag(Book::IDBase);
+
+    AVL::AvlTree<Book> searchTree(m_books_list);
     tempBook.idSetter(argId);
-    searchTree.search(tempBook);
+    return searchTree.search(tempBook);
 }
 
-void Core::searchAllBooks(std::string argTitle) {
-    for (auto &i: m_books_list) {
-        i.changeCompTag(Book::TitleBase);
-    }
-    AVL::AvlTree<Book> searchTree(m_books_list);
+Book *Core::searchAllBooks(std::string argTitle) {
     Book tempBook;
+    tempBook.changeCompTag(Book::TitleBase);
+
+    AVL::AvlTree<Book> searchTree(m_books_list);
     tempBook.titleSetter(argTitle);
-    searchTree.search(tempBook);
+    return searchTree.search(tempBook);
 }
 
 void Core::sortAllBooksId() {
-    for (auto &i: m_books_list) {
-        i.changeCompTag(Book::IDBase);
-    }
+    Book temp;
+    temp.changeCompTag(Book::IDBase);
     AVL::AvlTree<Book> searchTree(m_books_list);
     searchTree.print();
 }
 
 void Core::sortAllBooksTitle() {
-    for (auto &i: m_books_list) {
-        i.changeCompTag(Book::TitleBase);
-    }
+    Book temp;
+    temp.changeCompTag(Book::TitleBase);
     AVL::AvlTree<Book> searchTree(m_books_list);
     searchTree.print();
 }
 
 void Core::printBookList() {
-    for (auto &i:m_books_list) {
+    for (auto &i: m_books_list) {
         std::cout << i << std::endl;
     }
 }
 
-void Core::searchUsers(int userId) {
-    for (auto &i:m_all_user_list) {
-        i.changeCompTag(OrdinaryUser::IDBase);
-    }
+OrdinaryUser *Core::searchUsers(int userId) {
+    OrdinaryUser tempUser;
+    tempUser.changeCompTag(OrdinaryUser::IDBase);
+
     AVL::AvlTree<OrdinaryUser> searchTree(m_all_user_list);
-    searchTree.search()
+    tempUser.idSetter(userId);
+    return searchTree.search(tempUser);
 }
 
-void Core::searchUsers(std::string userName) {
+OrdinaryUser *Core::searchUsers(std::string userName) {
+    OrdinaryUser tempUser;
+    tempUser.changeCompTag(OrdinaryUser::UserNameBase);
 
+    AVL::AvlTree<OrdinaryUser> searchTree(m_all_user_list);
+    tempUser.userNameSetter(userName);
+    return searchTree.search(tempUser);
 }

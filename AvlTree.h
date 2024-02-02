@@ -50,14 +50,14 @@ namespace AVL {
 
         Node<U> *recursiveBstSearch(Node<U> *argRoot, const U &target);
 
-        void search(const U &target);
+        U *search(const U &target);
 
         //overload == and >< and cout
         int max(int a, int b);
 
         int height(Node<U> *argNode);
 
-        Node<U>* newNode(const U& key);
+        Node<U> *newNode(const U &key);
 
     };
 
