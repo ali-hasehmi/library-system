@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include "menu.h"
-
+#include "OrdinaryUser.h"
 class MainMenu {
 public:
     MainMenu();

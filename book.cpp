@@ -1,5 +1,5 @@
 #include "book.h"
-
+#include <string>
 Book::CompTag Book::ms_comp_tag_book = Book::TitleBase;
 
 Book::Book(const std::string &_title, const std::string &_author, const std::string &_publish_date, Genre _genre)
@@ -22,8 +22,9 @@ Book::Book()
 
 int Book::loadFromFile(const std::string &_file_path)
 {
-    std::ifstream target_file(BOOK_DIR + _file_path);
-    if(!target_file.is_open()){
+    std::ifstream target_file(BOOK_DIR + _file_path + ".book");
+    if (!target_file.is_open())
+    {
         std::cerr << "Book::loadFromFile(string) : Could not open target file\n";
         return -1;
     }
@@ -36,7 +37,8 @@ int Book::loadFromFile(const std::string &_file_path)
 int Book::saveToFile()
 {
     std::ofstream target_file(BOOK_DIR + this->m_title + ".book");
-    if(!target_file.is_open()){
+    if (!target_file.is_open())
+    {
         std::cerr << "Book::loadFromFile(string) : Could not open target file\n";
         return -1;
     }
@@ -66,7 +68,7 @@ inputDataStream &operator>>(inputDataStream &inputStream, Book &_book)
 {
     inputStream >> _book.m_title >> _book.m_author >>
         _book.m_id >> _book.m_genre >> _book.m_give_time >>
-        _book.m_publish_date >> _book.m_is_available >>_book.m_reservation_queue;
+        _book.m_publish_date >> _book.m_is_available >> _book.m_reservation_queue;
     return inputStream;
 }
 

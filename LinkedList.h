@@ -86,6 +86,11 @@ public:
     Node(const U &_value);
     Node(const U &_value, U *_next, U *_previous);
     ~Node();
+    template <typename q>
+    friend outputDataStream &operator<<(outputDataStream &ods, const LinkedList<q> &_Dll);
+
+    template <typename q>
+    friend inputDataStream &operator>>(inputDataStream &ids, LinkedList<q> &_Dll);
 
 private:
     U m_data;

@@ -7,4 +7,5 @@ AbstractUser::AbstractUser(const std::string &_first_name, const std::string &_l
   m_user_name(_user_name),
   m_password(_password)
 {
+    this->m_id = rand();
 }

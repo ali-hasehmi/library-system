@@ -1,5 +1,8 @@
 #ifndef CORE_H
 #define CORE_H
+
+#include <filesystem>
+
 #include "LinkedList.h"
 #include "book.h"
 #include "OrdinaryUser.h"
@@ -9,6 +12,7 @@ class Core
 public:
     Core();
 
+    static void createDir();
 private:
     void loadAllBooks();
     void loadAllUsers();

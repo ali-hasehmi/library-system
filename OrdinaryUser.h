@@ -1,6 +1,7 @@
 #ifndef ORDINARY_USER_H
 #define ORDINARY_USER_H
 
+#include <filesystem>
 #include "AbstractUser.h"
 #include "LinkedList.h"
 #include "book.h"
@@ -15,7 +16,11 @@ public:
         UserNameBase
     };
 
+    OrdinaryUser();
+    OrdinaryUser(const std::string &_first_name, const std::string &_last_name, const std::string &_national_code, const std::string &_user_name,const std::string &_password);
+
     virtual AbstractUser *logIn(const std::string &_user_name, const std::string &_password) override;
+    int signUp();
     virtual int loadFromFile(const std::string &_file_path) override;
     virtual int saveToFile() override;
     static void changeCompTag(const CompTag &_tag);
@@ -27,7 +32,6 @@ public:
     friend outputDataStream &operator<<(outputDataStream &outputStream, const OrdinaryUser &_ou);
 private:
     int64_t m_penalty;
-    int64_t m_id;
     LinkedList<int64_t> m_user_book_id_list;
     static CompTag ms_comp_tag_user;
 };
